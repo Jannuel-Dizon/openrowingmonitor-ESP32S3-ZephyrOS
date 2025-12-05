@@ -64,7 +64,7 @@ This project uses a containerized build system to ensure a consistent environmen
 ### Quick Start
 Clone the repository:
 ```Bash
-git clone [https://github.com/Jannuel-Dizon/openrowingmonitor-ESP32S3-ZephyrOS.git](https://github.com/Jannuel-Dizon/openrowingmonitor-ESP32S3-ZephyrOS.git)
+git clone https://github.com/Jannuel-Dizon/openrowingmonitor-ESP32S3-ZephyrOS.git
 cd open-rowing-monitor-esp32
 ```
 
