@@ -1,0 +1,70 @@
+menu "Rowing Engine Physics"
+
+config OPENROWING_IMPULSES_PER_REV
+    int "Impulses per Revolution"
+    default 1
+    help
+        Number of magnets on the flywheel.
+
+config MIN_TIME_BETWEEN_IMPULSE_X10000
+    int "Time duration between impulses (scaled x10000)"
+    default 140
+    help
+        Minimum time duration between impulses.
+
+config MAX_TIME_BETWEEN_IMPULSE_X10000
+    int "Time duration between impulses (scaled x10000)"
+    default 5000
+    help
+        Maximun time duration between impulses.
+
+config MAXIMUM_DOWNWARD_CHANGE_X10000
+    int "Percentage change between successive intervals before measurements are considered invalid (scaled x10000)"
+    default 2500
+    help
+        Effectively the maximum acceleration.
+
+config MAXIMUM_UPWARD_CHANGE_X10000
+    int "Percentage change between successive intervals before measurements are considered invalid (scaled x10000)"
+    default 17500
+    help
+        Effectively the maximum deceleration.
+
+config SMOOTHING
+    int "(scaled x10000)"
+    default 10000
+    help
+        Smoothing determines the length of the running average for certain volatile measurements, 1 effectively turns it off
+
+config FLANK_LENGTH
+    int ""
+    default 2
+    help
+        minimum number of consecutive increasing/decreasing measuments that are needed before the stroke detection considers a drive phase change
+
+config NUM_OF_ERRORS_ALLOWED
+    int ""
+    default 0
+    help
+        Allows for a more noisy approach, but shouldn't be needed
+
+config OPENROWING_FLYWHEEL_INERTIA_X10000
+    int "Flywheel Inertia (scaled x10000)"
+    default 600
+    help
+      The inertia of the flywheel. Value is divided by 10000 in code.
+      Default 600 represents 0.06 kg*m^2.
+
+config OPENROWING_MINIMUM_DRIVE_TIME_MS
+    int "Minimum Drive Time (ms)"
+    default 400
+    help
+      Shortest valid drive phase in milliseconds.
+
+config OPENROWING_AUTO_DRAG_FACTOR
+    bool "Enable Auto Drag Factor Adjustment"
+    default y
+    help
+      If enabled, the engine calculates drag based on deceleration.
+
+endmenu
