@@ -1,0 +1,17 @@
+/ {
+    aliases {
+        // We name our sensor "impulse_sensor"
+        impulse-sensor = &rower_reed_switch;
+    };
+
+    gpio_keys {
+        compatible = "gpio-keys";
+
+        rower_reed_switch: reed_switch {
+            // GPIO 17, Pull-Up enabled, Active Low (Magnet closes switch -> Low)
+            // If your sensor is Active High, change GPIO_ACTIVE_LOW to GPIO_ACTIVE_HIGH
+            gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Flywheel Impulse Sensor";
+        };
+    };
+};

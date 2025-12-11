@@ -1,37 +1,42 @@
 #include "MovingAverager.h"
+#include <zephyr/logging/log.h>
 
-// Constructor
-MovingAverager::MovingAverager(int len, double initValue) {
-    if(len > MAX_AVERAGE_SIZE)
-    {
-        len = MAX_AVERAGE_SIZE;
+LOG_MODULE_REGISTER(MovingAverager, LOG_LEVEL_DBG);
+
+MovingAverager::MovingAverager(int requestedLength, double initValue) {
+    // Safety Check:
+    // If logic somewhere requests a size larger than we allocated,
+    // we clamp it to prevent memory corruption (buffer overflow).
+    if (requestedLength > MAX_AVERAGER_CAPACITY) {
+        LOG_WRN("Requested size %d > Max Capacity %d. Clamping.", requestedLength, MAX_AVERAGER_CAPACITY);
+        length = MAX_AVERAGER_CAPACITY;
+    } else {
+        length = requestedLength;
     }
-    this->capacity = len;
-    this->reset(initValue);
+    reset(initValue);
 }
 
 void MovingAverager::pushValue(double dataPoint) {
-    for (int i = capacity - 1; i > 0; i--) {
-        this->dataPoints[i] = this->dataPoints[i - 1];
+    // Standard shift logic
+    currAve = currAve+((dataPoint-dataPoints[length-1])/length);
+    for (int i = length - 1; i > 0; i--) {
+        dataPoints[i] = dataPoints[i - 1];
     }
-    this->dataPoints[0] = dataPoint;
-
-}
-
-double MovingAverager::getAverage() {
-    double sum = 0.0;
-    for (double val : this->dataPoints) {
-        sum += val;
-    }
-    return sum / this->capacity;
+    dataPoints[0] = dataPoint;
 }
 
 void MovingAverager::replaceLastPushedValue(double dataPoint) {
-    this->dataPoints[0] = dataPoint;
+    currAve = currAve+((dataPoint-dataPoints[0])/length);
+    dataPoints[0] = dataPoint;
+}
+
+double MovingAverager::getAverage() {
+    return currAve;
 }
 
 void MovingAverager::reset(double initValue) {
-    for (int i = 0; i < capacity; i++) {
-        this->dataPoints[i] = initValue;
+    for (int i = 0; i < length; i++) {
+        dataPoints[i] = initValue;
     }
+    currAve = initValue;
 }
