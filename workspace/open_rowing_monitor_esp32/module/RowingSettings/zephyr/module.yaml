@@ -1,4 +1,0 @@
-name: RowingSettings
-build:
-  cmake: .
-  kconfig: Kconfig

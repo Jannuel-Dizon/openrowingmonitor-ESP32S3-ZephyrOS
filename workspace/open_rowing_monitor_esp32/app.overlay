@@ -1,14 +1,11 @@
 / {
     aliases {
-        // Map the alias "impulse_sensor" to the node "rower_reed_switch"
         impulse-sensor = &rower_reed_switch;
     };
 
     gpio_keys {
         compatible = "gpio-keys";
-
         rower_reed_switch: reed_switch {
-            // GPIO 17, Pull-Up enabled, Active Low (Button press connects to GND)
             gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             label = "Flywheel Impulse Sensor";
         };

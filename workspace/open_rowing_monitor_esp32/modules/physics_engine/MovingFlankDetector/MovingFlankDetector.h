@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <zephyr/kernel.h>
 
-#include "averager/MovingAverager.h"
+#include "MovingAverager.h"
 #include "RowingSettings.h"
 
 // Define the array size based on Kconfig.
