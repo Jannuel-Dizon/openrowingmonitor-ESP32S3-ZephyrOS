@@ -58,7 +58,10 @@ int main(void) {
     }
 
     LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
-
+    StorageManager storage;
+        if (storage.init() == 0) {
+            storage.appendRecord("Booting Open Rowing Monitor...");
+        }
     // 4. Main Loop (Core 0)
     // The physics runs in the background. We can use this thread for
     // simple status monitoring or eventually the Bluetooth implementation.
@@ -76,7 +79,14 @@ int main(void) {
         }
 
         k_msleep(1000);
-    }
 
+        // Simple test write every second
+        if (data.state == RowingState::DRIVE) {
+             // Basic CSV format: Time, Power, Distance
+             char buffer[64];
+             sprintf(buffer, "%.2f, %.1f, %.1f", data.totalTime, data.power, data.distance);
+             storage.appendRecord(std::string(buffer));
+        }
+    }
     return 0;
 }

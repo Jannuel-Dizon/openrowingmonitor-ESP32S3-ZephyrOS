@@ -1,13 +1,60 @@
+/* 1. Includes for Macros (GPIO_ACTIVE_LOW, SPIM2_MISO_..., etc) */
+#include <zephyr/dt-bindings/pinctrl/esp-pinctrl-common.h>
+#include <dt-bindings/pinctrl/esp32s3-pinctrl.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
 / {
+    /* 2. Aliases: Giving C++ friendly names to hardware nodes */
     aliases {
         impulse-sensor = &rower_reed_switch;
+        sdhc0 = &orm_sdhc;
     };
 
+    /* 3. GPIO Keys: Virtual device for the Sensor */
     gpio_keys {
         compatible = "gpio-keys";
+
         rower_reed_switch: reed_switch {
+            /* GPIO 17, Pull-Up, Active Low */
             gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             label = "Flywheel Impulse Sensor";
+        };
+    };
+};
+
+/* 4. Pin Controller: Defining the SPI pins */
+&pinctrl {
+    spim2_default: spim2_default {
+        group1 {
+            /* MISO=13, MOSI=11, CLK=12 */
+            pinmux = <SPIM2_MISO_GPIO13>,
+                     <SPIM2_MOSI_GPIO11>,
+                     <SPIM2_SCLK_GPIO12>;
+        };
+    };
+};
+
+/* 5. SPI2 Bus: Enabling the bus and attaching pins */
+&spi2 {
+    status = "okay";
+    pinctrl-0 = <&spim2_default>;
+    pinctrl-names = "default";
+
+    /* Software Chip Select on GPIO 10 */
+    cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+
+    /* 6. The SD Card Slot Device */
+    orm_sdhc: sdhc@0 {
+        compatible = "zephyr,sdhc-spi-slot";
+        reg = <0>; /* Chip Select Index 0 */
+        status = "okay";
+        label = "SDHC_SPI";
+        spi-max-frequency = <20000000>; /* 20 MHz */
+
+        /* 7. The Disk Driver */
+        mmc {
+            compatible = "zephyr,sdmmc-disk";
+            status = "okay";
         };
     };
 };
