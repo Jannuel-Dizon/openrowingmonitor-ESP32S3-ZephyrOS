@@ -7,7 +7,7 @@
     /* 2. Aliases: Giving C++ friendly names to hardware nodes */
     aliases {
         impulse-sensor = &rower_reed_switch;
-        sdhc0 = &orm_sdhc;
+        orm-sdhc = &orm_sdhc0;
     };
 
     /* 3. GPIO Keys: Virtual device for the Sensor */
@@ -44,17 +44,17 @@
     cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
 
     /* 6. The SD Card Slot Device */
-    orm_sdhc: sdhc@0 {
+    orm_sdhc0: sdhc_spi@0 {
         compatible = "zephyr,sdhc-spi-slot";
         reg = <0>; /* Chip Select Index 0 */
         status = "okay";
-        label = "SDHC_SPI";
         spi-max-frequency = <20000000>; /* 20 MHz */
 
         /* 7. The Disk Driver */
         mmc {
             compatible = "zephyr,sdmmc-disk";
             status = "okay";
+            disk-name = "SD2";
         };
     };
 };

@@ -4,9 +4,9 @@
 
 LOG_MODULE_REGISTER(StorageManager, LOG_LEVEL_INF);
 
-// The generic mount point for SD cards in Zephyr is usually mapped to "SD"
-const char* StorageManager::disk_mount_pt = "/SD:";
-const char* StorageManager::log_file_path = "/SD:/workout.csv";
+// NEW (Use a unique name)
+const char* StorageManager::disk_mount_pt = "/SD2:";
+const char* StorageManager::log_file_path = "/SD2:/workout.csv";
 
 StorageManager::StorageManager() {
     // Initialize the mount point structure
@@ -16,15 +16,15 @@ StorageManager::StorageManager() {
 }
 
 int StorageManager::init() {
-    LOG_INF("Attempting to mount SD card...");
+    LOG_INF("Attempting to mount SD card at %s...", mp.mnt_point);
 
-    // 1. Mount the filesystem
     int res = fs_mount(&mp);
 
-    if (res == FR_OK) {
-        LOG_INF("SD Card mounted successfully at %s", mp.mnt_point);
+    // Accept 0 (Success) OR -16 (Already Mounted) as success
+    if (res == 0 || res == -16) {
+        LOG_INF("SD Card mounted successfully (res: %d).", res);
         isMounted = true;
-        return 0;
+        return res;
     } else {
         LOG_ERR("Error mounting SD Card: %d", res);
         return res;

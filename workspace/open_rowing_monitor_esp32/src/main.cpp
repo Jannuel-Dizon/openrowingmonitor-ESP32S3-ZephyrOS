@@ -1,8 +1,11 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+// #include <string>
 #include "RowingSettings.h"
 #include "RowingEngine.h"
+#include "RowingData.h"
 #include "GpioTimerService.h"
+#include "StorageManager.h"
 
 LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
@@ -56,15 +59,18 @@ int main(void) {
         LOG_ERR("CRITICAL: Sensor setup failed! System halted.");
         return -1;
     }
-
-    LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
+    LOG_INF("Mounting SD Card");
     StorageManager storage;
         if (storage.init() == 0) {
-            storage.appendRecord("Booting Open Rowing Monitor...");
+        	storage.appendRecord("Booting Open Rowing Monitor...");
+        } else {
+        	LOG_ERR("Failed");
+         	return 0;
         }
     // 4. Main Loop (Core 0)
     // The physics runs in the background. We can use this thread for
     // simple status monitoring or eventually the Bluetooth implementation.
+    LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
     while (1) {
         // Fetch data safely using the Mutex-protected getter
         RowingData liveData = engine.getData();
@@ -81,10 +87,10 @@ int main(void) {
         k_msleep(1000);
 
         // Simple test write every second
-        if (data.state == RowingState::DRIVE) {
+        if (liveData.state == RowingState::DRIVE) {
              // Basic CSV format: Time, Power, Distance
              char buffer[64];
-             sprintf(buffer, "%.2f, %.1f, %.1f", data.totalTime, data.power, data.distance);
+             sprintf(buffer, "%.2f, %.1f, %.1f", liveData.totalTime, liveData.power, liveData.distance);
              storage.appendRecord(std::string(buffer));
         }
     }
