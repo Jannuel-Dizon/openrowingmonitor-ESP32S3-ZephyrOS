@@ -1,0 +1,3 @@
+name: fit_sdk
+build:
+  cmake: .
