@@ -1,94 +1,143 @@
 #include "StorageManager.h"
 #include <zephyr/logging/log.h>
-#include <zephyr/storage/flash_map.h>
+#include <zephyr/fs/fs.h>
+#include <zephyr/storage/flash_map.h> // <--- REQUIRED for FIXED_PARTITION_ID
 
-LOG_MODULE_REGISTER(StorageManager, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(storage_manager, LOG_LEVEL_INF);
 
-// We need the numeric ID of the partition labeled "storage" in Device Tree
-#define STORAGE_PARTITION_ID FIXED_PARTITION_ID(storage_partition)
+#define MOUNT_POINT "/lfs"
 
-const char* StorageManager::mount_pt = "/lfs";
-const char* StorageManager::log_file_path = "/lfs/workout.csv";
+// Static members
+const char* StorageManager::mount_pt = MOUNT_POINT;
+const char* StorageManager::log_file_path = "/lfs/session.fit";
 
 StorageManager::StorageManager() {
-    // 1. Configure LittleFS parameters
-    // Zephyr calculates the read/write/erase sizes automatically
-    // from the flash driver if we set these to 0.
-    lfs_data.read_size = 16;
-    lfs_data.prog_size = 16;
-    lfs_data.cache_size = 64;
-    lfs_data.lookahead_size = 32;
-    lfs_data.block_cycles = 512;
+    // ----------------------------------------------------------------------
+    // FIX: Use FIXED_PARTITION_ID with the Node Label
+    // This assumes your overlay has: storage_partition: partition@...
+    // ----------------------------------------------------------------------
+    mp.storage_dev = (void *)FIXED_PARTITION_ID(DT_NODELABEL(storage_partition));
 
-    // 2. Setup the Mount Point
-    mp.type = FS_LITTLEFS;
-    mp.fs_data = &lfs_data;
     mp.mnt_point = mount_pt;
+    mp.fs_data = &lfs_data;
+    mp.type = FS_LITTLEFS;
 
-    // 3. Point to the specific Flash Partition
-    mp.storage_dev = (void*)STORAGE_PARTITION_ID;
+    // Do not use FS_MOUNT_FLAG_USE_DISK_ACCESS for internal flash
+    mp.flags = FS_MOUNT_FLAG_NO_FORMAT;
+
+    // Configure LittleFS
+    lfs_data.cfg.read_size = 16;
+    lfs_data.cfg.prog_size = 16;
+    lfs_data.cfg.cache_size = 64;
+    lfs_data.cfg.lookahead_size = 32;
+    lfs_data.cfg.block_cycles = 512;
 }
 
-int StorageManager::init() {
-    LOG_INF("Mounting LittleFS to %s...", mp.mnt_point);
+// // ... rest of the file (init, appendRecord, etc.) remains the same ...
+// #include "StorageManager.h"
+// #include <zephyr/logging/log.h>
+// #include <zephyr/fs/fs.h>
 
+// LOG_MODULE_REGISTER(storage_manager, LOG_LEVEL_INF);
+
+// // Define partition name from Device Tree (must match app.overlay)
+// #define STORAGE_PARTITION_LABEL "storage_partition"
+// #define MOUNT_POINT "/lfs"
+
+// // Static members
+// const char* StorageManager::mount_pt = MOUNT_POINT;
+// const char* StorageManager::log_file_path = "/lfs/session.fit";
+
+// StorageManager::StorageManager() {
+//     // 1. USE FLASH_AREA_ID, NOT DEVICE
+//     // The cast to (void*) is required by the struct definition
+//     mp.storage_dev = (void *)FLASH_AREA_DEVICE(storage_partition);
+
+//     mp.mnt_point = mount_pt;
+//     mp.fs_data = &lfs_data;
+//     mp.type = FS_LITTLEFS;
+
+//     // 2. REMOVE THIS FLAG
+//     // mp.flags = FS_MOUNT_FLAG_USE_DISK_ACCESS;
+//     mp.flags = FS_MOUNT_FLAG_NO_FORMAT; // Optional: prevents auto-format on mount (safer)
+
+//     // 3. Configure LittleFS
+//     lfs_data.cfg.read_size = 16;
+//     lfs_data.cfg.prog_size = 16;
+//     lfs_data.cfg.cache_size = 64;
+//     lfs_data.cfg.lookahead_size = 32;
+//     lfs_data.cfg.block_cycles = 512;
+// }
+
+int StorageManager::init() {
     int res = fs_mount(&mp);
 
-    // 4. Handle First-Boot Scenario (Format required)
-    if (res < 0 && res != -EBUSY) {
-        LOG_WRN("Mount failed (Error %d). Attempting to format...", res);
+    if (res != 0) {
+        LOG_WRN("Mount failed, attempting to format... (Error: %d)", res);
 
-        // Use the generic FS API to format the area defined in 'mp'
-        res = fs_format(&mp);
-        if (res < 0) {
-            LOG_ERR("Format failed: %d", res);
-            return res;
+        // 3. Use fs_mkfs instead of fs_format
+        // fs_mkfs(type, device_ptr, config_ptr, flags)
+        res = fs_mkfs(FS_LITTLEFS, (uintptr_t)mp.storage_dev, &lfs_data, 0);
+
+        if (res == 0) {
+            LOG_INF("Format successful, remounting...");
+            res = fs_mount(&mp);
         }
-
-        // Try mounting again after format
-        res = fs_mount(&mp);
     }
 
-    if (res == 0 || res == -EBUSY) {
-        LOG_INF("Storage Ready.");
+    if (res == 0) {
+        LOG_INF("LittleFS mounted at %s", mount_pt);
         isMounted = true;
-        return 0;
+    } else {
+        LOG_ERR("Failed to init LittleFS (Error: %d)", res);
     }
 
-    LOG_ERR("Critical Storage Failure: %d", res);
     return res;
 }
 
-// appendRecord remains largely the same, just ensure you check isMounted.
 bool StorageManager::appendRecord(const std::string& data) {
     if (!isMounted) return false;
 
     struct fs_file_t file;
     fs_file_t_init(&file);
 
+    // Open in Append + Create mode
     int rc = fs_open(&file, log_file_path, FS_O_CREATE | FS_O_APPEND | FS_O_WRITE);
-    if (rc < 0) return false;
+    if (rc < 0) {
+        LOG_ERR("Failed to open file: %d", rc);
+        return false;
+    }
 
-    fs_write(&file, data.c_str(), data.length());
-    fs_write(&file, "\n", 1);
+    rc = fs_write(&file, data.c_str(), data.size());
     fs_close(&file);
 
+    if (rc < 0) {
+        LOG_ERR("Failed to write: %d", rc);
+        return false;
+    }
     return true;
 }
 
-void StorageManager::listMountedVolume() {
-    int index = 0;
-    const char *mnt_name;
-    int rc;
+// 4. Fixed function name typo (Vol vs Volume)
+void StorageManager::listMountedVol() {
+    if (!isMounted) return;
 
-    LOG_INF("--- Inspecting Mounted Volumes ---");
-    while (true) {
-        rc = fs_readmount(&index, &mnt_name);
-        if (rc < 0) {
-            // -ENOENT means we reached the end of the list
-            break;
-        }
-        LOG_INF("  [%d] Mounted: %s", index, mnt_name);
+    struct fs_dir_t dir;
+    fs_dir_t_init(&dir);
+
+    int rc = fs_opendir(&dir, mount_pt);
+    if (rc < 0) {
+        LOG_ERR("Error opening dir: %d", rc);
+        return;
     }
-    LOG_INF("----------------------------------");
+
+    LOG_INF("Listing files in %s:", mount_pt);
+    struct fs_dirent entry;
+    while (fs_readdir(&dir, &entry) == 0 && entry.name[0] != 0) {
+        LOG_INF("  %c %s (%u bytes)",
+            entry.type == FS_DIR_ENTRY_DIR ? 'D' : 'F',
+            entry.name,
+            entry.size);
+    }
+    fs_closedir(&dir);
 }

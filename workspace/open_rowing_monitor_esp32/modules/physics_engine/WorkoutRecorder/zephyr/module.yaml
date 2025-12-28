@@ -1,3 +1,0 @@
-name: physics_engine
-build:
-    cmake: .

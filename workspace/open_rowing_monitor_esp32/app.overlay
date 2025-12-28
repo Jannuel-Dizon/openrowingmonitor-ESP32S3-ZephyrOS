@@ -4,6 +4,7 @@
     /* 2. Aliases: Giving C++ friendly names to hardware nodes */
     aliases {
         impulse-sensor = &rower_reed_switch;
+        storage-partition = &storage_partition;
     };
 
     /* 3. GPIO Keys: Virtual device for the Sensor */
