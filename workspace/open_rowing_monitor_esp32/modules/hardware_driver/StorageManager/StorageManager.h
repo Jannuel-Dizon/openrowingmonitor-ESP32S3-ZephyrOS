@@ -2,24 +2,22 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/fs/fs.h>
-#include <zephyr/fs/littlefs.h> // <--- NEW HEADER
-// #include <lfs.h>
+#include <zephyr/fs/littlefs.h>
 #include <string>
 
 class StorageManager {
 public:
-    StorageManager();
-    int init();
-    bool appendRecord(const std::string& data);
-    void listMountedVol();
-
+    	StorageManager();
+    	int init();
+    	bool appendRecord(const std::string& data, const std::string& filename);
+    	void listMountedVol();
+     	void dumpFile(const std::string& filename);
 private:
-    // LittleFS specific structures
-    struct fs_mount_t mp;
-    struct fs_littlefs lfs_data; // <--- Configuration for LittleFS
+    	// LittleFS specific structures
+    	struct fs_mount_t mp;
+    	struct fs_littlefs lfs_data;
 
-    static const char* mount_pt;
-    static const char* log_file_path;
+     	static const char* mount_pt;
 
-    bool isMounted = false;
+      bool isMounted = false;
 };

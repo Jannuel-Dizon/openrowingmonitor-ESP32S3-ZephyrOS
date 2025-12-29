@@ -1,6 +1,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
-// #include <string>
+#include <string>
 #include "RowingSettings.h"
 #include "RowingEngine.h"
 #include "RowingData.h"
@@ -59,10 +59,10 @@ int main(void) {
         LOG_ERR("CRITICAL: Sensor setup failed! System halted.");
         return -1;
     }
-    LOG_INF("Mounting SD Card");
     StorageManager storage;
         if (storage.init() == 0) {
-        	storage.appendRecord("Booting Open Rowing Monitor...");
+        	// storage.appendRecord("Booting Open Rowing Monitor...");
+            	LOG_INF("Flash initialized.");
         } else {
         	LOG_ERR("Failed");
          	return 0;
@@ -70,10 +70,12 @@ int main(void) {
     // 4. Main Loop (Core 0)
     // The physics runs in the background. We can use this thread for
     // simple status monitoring or eventually the Bluetooth implementation.
-    storage.listMountedVol();
-    LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
-    while (1) {
-        // Fetch data safely using the Mutex-protected getter
+    // storage.listMountedVol();
+    // LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
+    storage.dumpFile("test.csv");
+    for (int i = 0; i < 50; i++) {
+    	/*
+     	// Fetch data safely using the Mutex-protected getter
         RowingData liveData = engine.getData();
 
         // Print a "Heartbeat" every 5 seconds if idle
@@ -85,9 +87,7 @@ int main(void) {
              LOG_INF("Status: DRIVE    | Torque: %.1f", liveData.instantaneousTorque);
         }
 
-        k_msleep(1000);
 
-        /*
         // Simple test write every second
         if (liveData.state == RowingState::DRIVE) {
              // Basic CSV format: Time, Power, Distance
@@ -96,6 +96,11 @@ int main(void) {
              storage.appendRecord(std::string(buffer));
         }
         */
+        char buffer[64];
+        sprintf(buffer, "%d, %d, %d, ", i, i+1, i+2);
+        storage.appendRecord(std::string(buffer), "test.csv");
+        k_msleep(10);
     }
+    storage.dumpFile("test.csv");
     return 0;
 }
