@@ -16,6 +16,5 @@
 #if defined(FIT_PRODUCT_RELEASE)
    #include "fit_release.c"
 #else
-   #include "fit_example.c"
+   // #include "fit_example.c"
 #endif
-

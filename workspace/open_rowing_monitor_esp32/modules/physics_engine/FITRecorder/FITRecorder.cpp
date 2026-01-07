@@ -1,4 +1,4 @@
-#include "FitRecorder.h"
+#include "FITRecorder.h"
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(fit_recorder, LOG_LEVEL_INF);

@@ -9,16 +9,10 @@ set(ZEPHYR_EXTRA_MODULES
     # ${CMAKE_CURRENT_SOURCE_DIR}/modules/physics_engine/FITRecorder
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/hardware_driver/GpioTimerService
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/hardware_driver/StorageManager
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_config
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_convert
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_crc
-    # # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_example
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_include
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_product
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_profile
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_ram
-    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/garmin_fit/fit_release
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/BleManager
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/FTMSService
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/RowerBridge
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/RowerDataPacket
 )
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
@@ -34,7 +28,11 @@ zephyr_include_directories(
     modules/physics_engine/RowingEngine
     modules/physics_engine/MovingFlankDetector
     modules/physics_engine/MovingAverager
-    modules/physics_engine/FITRecorder
+    # modules/physics_engine/FITRecorder
     modules/hardware_driver/GpioTimerService
     modules/hardware_driver/StorageManager
+    modules/ble_service/BleManager
+    modules/ble_service/FTMSService
+    modules/ble_service/RowerBridge
+    modules/ble_service/RowerDataPacket
 )

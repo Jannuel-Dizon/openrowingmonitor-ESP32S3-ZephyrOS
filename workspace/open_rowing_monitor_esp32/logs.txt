@@ -1,0 +1,1114 @@
+-- west build: making build dir /workspace/open_rowing_monitor_esp32/build pristine
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /workspace/open_rowing_monitor_esp32
+-- CMake version: 3.31.6
+-- Found Python3: /opt/venv/bin/python3 (found suitable version "3.13.5", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /root/.cache/zephyr
+-- Zephyr version: 4.1.0 (/opt/toolchains/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: esp32s3_devkitc, qualifiers: esp32s3/procpu
+-- Found host-tools: zephyr 0.17.0 (/root/zephyr-sdk-0.17.0)
+-- Found toolchain: zephyr 0.17.0 (/root/zephyr-sdk-0.17.0)
+-- Found Dtc: /root/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.6.0", minimum required is "1.4.6")
+-- Found BOARD.dts: /opt/toolchains/zephyr/boards/espressif/esp32s3_devkitc/esp32s3_devkitc_procpu.dts
+-- Found devicetree overlay: /workspace/open_rowing_monitor_esp32/app.overlay
+-- Generated zephyr.dts: /workspace/open_rowing_monitor_esp32/build/zephyr/zephyr.dts
+-- Generated pickled edt: /workspace/open_rowing_monitor_esp32/build/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/devicetree_generated.h
+-- Including generated dts.cmake file: /workspace/open_rowing_monitor_esp32/build/zephyr/dts.cmake
+Parsing /opt/toolchains/zephyr/Kconfig
+Loaded configuration '/opt/toolchains/zephyr/boards/espressif/esp32s3_devkitc/esp32s3_devkitc_procpu_defconfig'
+Merged configuration '/workspace/open_rowing_monitor_esp32/prj.conf'
+Configuration saved to '/workspace/open_rowing_monitor_esp32/build/zephyr/.config'
+Kconfig header saved to '/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-gcc
+-- Espressif HAL path: /opt/toolchains/modules/hal/espressif
+-- Use the esptool.py: /opt/toolchains/modules/hal/espressif/tools/esptool_py/esptool.py
+-- Image partition /soc/flash-controller@60002000/flash@0/partitions/partition@0
+-- Configuring done (4.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /workspace/open_rowing_monitor_esp32/build
+-- west build: building application
+[1/245] Generating ../../../../include/generated/xtensa_handlers_tmp.c
+[2/245] Generating ../../../../include/generated/zephyr/core-isa-dM.h
+[3/245] Preparing syscall dependency handling
+
+[4/245] Generating ../../../../include/generated/xtensa_handlers.h
+[5/245] Generating ../../../../include/generated/xtensa_vectors.ld
+[6/245] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.1.0 (/opt/toolchains/zephyr), build: v4.1.0
+[7/245] Generating ../../../../include/generated/zephyr/zsr.h
+[8/245] Generating misc/generated/syscalls_subdirs.trigger
+[9/245] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[10/245] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[11/245] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[12/245] Generating include/generated/zephyr/driver-validation.h
+[13/245] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[14/245] Building C object zephyr/CMakeFiles/offsets.dir/arch/xtensa/core/offsets/offsets.c.obj
+[15/245] Generating include/generated/zephyr/offsets.h
+[16/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/cpp/abi/cpp_dtors.c.obj
+[17/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[18/245] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[19/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[20/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[21/245] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[22/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf.c.obj
+[23/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[24/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/ring_buffer.c.obj
+[25/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[26/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/esp32s3/newlib_fix.c.obj
+[27/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[28/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[29/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/esp32s3/soc.c.obj
+[30/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/esp32s3/esp32s3-mp.c.obj
+[31/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_cache.c.obj
+[32/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[33/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/esp32s3/soc_cache.c.obj
+[34/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[35/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[36/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/esp32s3/hw_init.c.obj
+[37/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[38/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[39/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/storage/flash_map/flash_map.c.obj
+[40/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/storage/flash_map/flash_map_layout.c.obj
+[41/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/spi_flash_encrypt_hal_iram.c.obj
+[42/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_msg.c.obj
+[43/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_mgmt.c.obj
+[44/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/backends/log_backend_uart.c.obj
+[45/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/storage/flash_map/flash_map_default.c.obj
+[46/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_core.c.obj
+[47/245] Building C object zephyr/CMakeFiles/zephyr.dir/soc/espressif/common/loader.c.obj
+[48/245] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_output.c.obj
+[49/245] Building C object zephyr/CMakeFiles/zephyr.dir/drivers/flash/flash_util.c.obj
+[50/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_boya.c.obj
+[51/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/esp32s3/spi_flash_oct_flash_init.c.obj
+[52/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/spi_flash_hal.c.obj
+[53/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/bootloader_support/src/flash_encrypt.c.obj
+[54/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_drivers.c.obj
+[55/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_issi.c.obj
+[56/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/esp_gpio_reserve.c.obj
+[57/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/spi_flash_hal_iram.c.obj
+[58/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/spi_flash_hal_gpspi.c.obj
+[59/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_th.c.obj
+[60/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_gd.c.obj
+[61/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_mxic.c.obj
+[62/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_hpm_enable.c.obj
+[63/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_os_func_noos.c.obj
+[64/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/uart_hal_iram.c.obj
+[65/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/memspi_host_driver.c.obj
+[66/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/flash_ops.c.obj
+[67/245] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[68/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/flash_mmap.c.obj
+[69/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/esp_flash_spi_init.c.obj
+[70/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_winbond.c.obj
+[71/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/mpu_hal.c.obj
+[72/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_mxic_opi.c.obj
+[73/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_wrap.c.obj
+[74/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/bootloader_support/src/bootloader_clock_init.c.obj
+[75/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/soc/esp32s3/gpio_periph.c.obj
+[76/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/soc/esp32s3/rtc_io_periph.c.obj
+[77/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_chip_generic.c.obj
+[78/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/spi_flash_os_func_app.c.obj
+[79/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/uart_hal.c.obj
+[80/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/common/console_init.c.obj
+[81/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/mac_addr.c.obj
+[82/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32s3.c.obj
+[83/245] Building CXX object CMakeFiles/app.dir/src/main.cpp.obj
+[84/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/clk_ctrl_os.c.obj
+[85/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/cpu_region_protect.c.obj
+[86/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/bootloader_support/bootloader_flash/src/flash_qio_mode.c.obj
+[87/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/regi2c_ctrl.c.obj
+[88/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/spi_flash/esp_flash_api.c.obj
+[89/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/mspi_timing_tuning.c.obj
+[90/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/common/soc_init.c.obj
+[91/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/esp_clk.c.obj
+[92/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/hw_random.c.obj
+[93/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/periph_ctrl.c.obj
+[94/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/systimer.c.obj
+[95/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/cpu.c.obj
+[96/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_mm/port/esp32s3/ext_mem_layout.c.obj
+[97/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_crc.c.obj
+[98/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp_clk_tree_common.c.obj
+[99/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/esp_clk_tree.c.obj
+[100/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_sys.c.obj
+[101/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_efuse.c.obj
+[102/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/rtc_module.c.obj
+[103/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_gpio.c.obj
+[104/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_systimer.c.obj
+[105/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/esp_cpu_intr.c.obj
+[106/245] Building ASM object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_longjmp.S.obj
+[107/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/mspi_timing_config.c.obj
+[108/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_spiflash.c.obj
+[109/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/rtc_time.c.obj
+[110/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/rtc_sleep.c.obj
+[111/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_cache_esp32s2_esp32s3.c.obj
+[112/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/rtc_clk_init.c.obj
+[113/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_wdt.c.obj
+[114/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_rom/patches/esp_rom_uart.c.obj
+[115/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_timer/src/ets_timer_legacy.c.obj
+[116/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/rtc_clk.c.obj
+[117/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_system/port/soc/esp32s3/reset_reason.c.obj
+[118/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/rtc_init.c.obj
+[119/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/port/esp32s3/sar_periph_ctrl.c.obj
+[120/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/efuse_hal.c.obj
+[121/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/systimer_hal.c.obj
+[122/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_system/esp_err.c.obj
+[123/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/cache_hal.c.obj
+[124/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_timer/src/esp_timer_impl_common.c.obj
+[125/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/esp32s3/efuse_hal.c.obj
+[126/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_system/port/soc/esp32s3/clk.c.obj
+[127/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/xt_wdt_hal.c.obj
+[128/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/mmu_hal.c.obj
+[129/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/log/log.c.obj
+[130/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_mm/esp_mmu_map.c.obj
+[131/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/esp32s3/clk_tree_hal.c.obj
+[132/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/hal/wdt_hal_iram.c.obj
+[133/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_system/port/soc/esp32s3/system_internal.c.obj
+[134/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/src/soc_random.c.obj
+[135/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/src/soc_init.c.obj
+[136/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/log/log_noos.c.obj
+[137/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_timer/src/esp_timer_impl_systimer.c.obj
+[138/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/src/stubs.c.obj
+[139/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/fit_crc.c.obj
+[140/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c.obj
+FAILED: zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c.obj 
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-gcc -DCONFIG_APP_BUILD_USE_FLASH_SECTIONS -DESP_PLATFORM -DKERNEL -DK_HEAP_MEM_POOL_SIZE=4096 -D_ANSI_SOURCE -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/opt/toolchains/zephyr/kernel/include -I/opt/toolchains/zephyr/arch/xtensa/include -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/. -I/opt/toolchains/modules/fs/littlefs -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_config/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_include/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_release/. -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr -I/opt/toolchains/zephyr/include -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated -I/opt/toolchains/zephyr/soc/espressif -I/opt/toolchains/zephyr/lib/libc/newlib/include -I/opt/toolchains/zephyr/soc/espressif/common/include -I/opt/toolchains/zephyr/soc/espressif/esp32s3/. -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include/bt -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/components/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/dma -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include/private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/platform_port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/log/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/xtensa -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/deprecated -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/gpio/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/uart/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/spi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_pm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/bootloader_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/heap/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_psram/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_mm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_netif/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_coex/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_wifi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_event/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include/esp_supplicant -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/crypto -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/utils -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/eap_peer -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/mbedtls/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include/boot -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager -isystem /opt/toolchains/zephyr/lib/libc/common/include -fno-strict-aliasing -Os -imacros /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fdiagnostics-color=always --sysroot=/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf -imacros /opt/toolchains/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/workspace/open_rowing_monitor_esp32=CMAKE_SOURCE_DIR -fmacro-prefix-map=/opt/toolchains/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/opt/toolchains=WEST_TOPDIR -ffunction-sections -fdata-sections -mlongcalls -fstrict-volatile-bitfields -std=c99 -MD -MT zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c.obj -MF zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c.obj.d -o zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c.obj -c /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c
+In file included from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:17:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:58:4: error: unknown type name 'FIT_UINT32'
+   58 |    FIT_UINT32 file_bytes_left;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:59:4: error: unknown type name 'FIT_UINT32'
+   59 |    FIT_UINT32 data_offset;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:61:7: error: unknown type name 'FIT_UINT32'
+   61 |       FIT_UINT32 timestamp;
+      |       ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:65:7: error: unknown type name 'FIT_FILE_HDR'
+   65 |       FIT_FILE_HDR file_hdr;
+      |       ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:66:7: error: unknown type name 'FIT_UINT8'
+   66 |       FIT_UINT8 mesg[FIT_MESG_SIZE];
+      |       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:66:22: error: 'FIT_MESG_SIZE' undeclared here (not in a function)
+   66 |       FIT_UINT8 mesg[FIT_MESG_SIZE];
+      |                      ^~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:68:4: error: unknown type name 'FIT_MESG_CONVERT'
+   68 |    FIT_MESG_CONVERT convert_table[FIT_LOCAL_MESGS];
+      |    ^~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:69:10: error: unknown type name 'FIT_MESG_DEF'
+   69 |    const FIT_MESG_DEF *mesg_def;
+      |          ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:71:7: error: unknown type name 'FIT_UINT16'
+   71 |       FIT_UINT16 crc;
+      |       ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:74:4: error: unknown type name 'FIT_BOOL'
+   74 |    FIT_BOOL has_dev_data;
+      |    ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:75:4: error: unknown type name 'FIT_UINT8'
+   75 |    FIT_UINT8 mesg_index;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:76:4: error: unknown type name 'FIT_UINT16'
+   76 |    FIT_UINT16 mesg_sizes[FIT_MAX_LOCAL_MESGS];
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:76:26: error: 'FIT_MAX_LOCAL_MESGS' undeclared here (not in a function); did you mean 'FIT_LOCAL_MESGS'?
+   76 |    FIT_UINT16 mesg_sizes[FIT_MAX_LOCAL_MESGS];
+      |                          ^~~~~~~~~~~~~~~~~~~
+      |                          FIT_LOCAL_MESGS
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:77:4: error: unknown type name 'FIT_UINT8'
+   77 |    FIT_UINT8 dev_data_sizes[FIT_MAX_LOCAL_MESGS];
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:78:4: error: unknown type name 'FIT_UINT16'
+   78 |    FIT_UINT16 mesg_offset;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:79:4: error: unknown type name 'FIT_UINT8'
+   79 |    FIT_UINT8 num_fields;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:80:4: error: unknown type name 'FIT_UINT8'
+   80 |    FIT_UINT8 field_num;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:81:4: error: unknown type name 'FIT_UINT8'
+   81 |    FIT_UINT8 field_index;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:82:4: error: unknown type name 'FIT_UINT8'
+   82 |    FIT_UINT8 field_offset;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:84:7: error: unknown type name 'FIT_UINT8'
+   84 |       FIT_UINT8 last_time_offset;
+      |       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:103:25: error: unknown type name 'FIT_BOOL'
+  103 |    void FitConvert_Init(FIT_BOOL read_file_header);
+      |                         ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:125:57: error: unknown type name 'FIT_UINT32'
+  125 |    FIT_CONVERT_RETURN FitConvert_Read(const void *data, FIT_UINT32 size);
+      |                                                         ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:151:60: error: unknown type name 'FIT_UINT32'
+  151 |    FIT_CONVERT_RETURN FitConvert_ReadExt(const void *data, FIT_UINT32 size, FIT_BOOL return_message_numbers);
+      |                                                            ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:151:77: error: unknown type name 'FIT_BOOL'
+  151 |    FIT_CONVERT_RETURN FitConvert_ReadExt(const void *data, FIT_UINT32 size, FIT_BOOL return_message_numbers);
+      |                                                                             ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:161:41: error: unknown type name 'FIT_MESG_DEF'
+  161 |    void FitConvert_SetMessageDefinition(FIT_MESG_DEF *mesg_def);
+      |                                         ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:170:4: error: unknown type name 'FIT_MESG_NUM'
+  170 |    FIT_MESG_NUM FitConvert_GetMessageNumber(void);
+      |    ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:180:10: error: unknown type name 'FIT_UINT8'
+  180 |    const FIT_UINT8 *FitConvert_GetMessageData(void);
+      |          ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:200:5: error: unknown type name 'FIT_UINT8'
+  200 |     FIT_UINT8 FitConvert_GetFieldSize(FIT_UINT8 field);
+      |     ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:200:39: error: unknown type name 'FIT_UINT8'
+  200 |     FIT_UINT8 FitConvert_GetFieldSize(FIT_UINT8 field);
+      |                                       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_Read':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:74:12: warning: implicit declaration of function 'FitConvert_ReadExt'; did you mean 'FitConvert_Read'? [-Wimplicit-function-declaration]
+   74 |     return FitConvert_ReadExt(data, size, FIT_FALSE);
+      |            ^~~~~~~~~~~~~~~~~~
+      |            FitConvert_Read
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:82:23: error: conflicting types for 'FitConvert_ReadExt'; have 'FIT_CONVERT_RETURN(const void *, FIT_UINT32,  FIT_BOOL)' {aka 'FIT_CONVERT_RETURN(const void *, long unsigned int,  unsigned char)'}
+   82 |    FIT_CONVERT_RETURN FitConvert_ReadExt(const void *data, FIT_UINT32 size, FIT_BOOL return_message_numbers)
+      |                       ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:74:12: note: previous implicit declaration of 'FitConvert_ReadExt' with type 'int()'
+   74 |     return FitConvert_ReadExt(data, size, FIT_FALSE);
+      |            ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_ReadExt':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:125:58: error: request for member 'header_size' in something not a structure or union
+  125 |                state->file_bytes_left = state->u.file_hdr.header_size + 2; // Increase to read header and CRC.
+      |                                                          ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:129:56: error: request for member 'header_size' in something not a structure or union
+  129 |             if (state->mesg_offset >= state->u.file_hdr.header_size)
+      |                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:131:75: error: request for member 'data_size' in something not a structure or union
+  131 |                state->file_bytes_left = *((FIT_UINT8 *) &state->u.file_hdr.data_size);
+      |                                                                           ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:132:88: error: request for member 'data_size' in something not a structure or union
+  132 |                state->file_bytes_left |= (FIT_UINT32)*((FIT_UINT8 *) &state->u.file_hdr.data_size + 1) << 8;
+      |                                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:133:88: error: request for member 'data_size' in something not a structure or union
+  133 |                state->file_bytes_left |= (FIT_UINT32)*((FIT_UINT8 *) &state->u.file_hdr.data_size + 2) << 16;
+      |                                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:134:88: error: request for member 'data_size' in something not a structure or union
+  134 |                state->file_bytes_left |= (FIT_UINT32)*((FIT_UINT8 *) &state->u.file_hdr.data_size + 3) << 24;
+      |                                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:138:47: error: request for member 'data_type' in something not a structure or union
+  138 |                   if (memcmp(state->u.file_hdr.data_type, ".FIT", 4) != 0)
+      |                                               ^
+In file included from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/./fit_crc.h:18,
+                 from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:18:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:142:64: error: request for member 'protocol_version' in something not a structure or union
+  142 |                if (FIT_PROTOCOL_VERSION_MAJOR(state->u.file_hdr.protocol_version) >
+      |                                                                ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:37:47: note: in definition of macro 'FIT_CAST'
+   37 |    #define FIT_CAST(_type, _value)   ((_type)(_value))
+      |                                               ^~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:142:20: note: in expansion of macro 'FIT_PROTOCOL_VERSION_MAJOR'
+  142 |                if (FIT_PROTOCOL_VERSION_MAJOR(state->u.file_hdr.protocol_version) >
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:195:91: error: request for member 'global_mesg_num' in something not a structure or union
+  195 |                   state->mesg_def = Fit_GetMesgDef(state->convert_table[state->mesg_index].global_mesg_num);
+      |                                                                                           ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:196:37: warning: passing argument 1 of 'Fit_InitMesg' from incompatible pointer type [-Wincompatible-pointer-types]
+  196 |                   Fit_InitMesg(state->mesg_def, state->u.mesg);
+      |                                     ^
+      |                                     |
+      |                                     const int *
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:387:43: note: expected 'const FIT_MESG_DEF *' but argument is of type 'const int *'
+  387 | FIT_BOOL Fit_InitMesg(const FIT_MESG_DEF *mesg_def, void *mesg);
+      |                       ~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:201:75: warning: passing argument 1 of 'Fit_GetFieldOffset' from incompatible pointer type [-Wincompatible-pointer-types]
+  201 |                         FIT_UINT16 field_offset = Fit_GetFieldOffset(state->mesg_def, FIT_FIELD_NUM_TIMESTAMP);
+      |                                                                           ^
+      |                                                                           |
+      |                                                                           const int *
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:393:51: note: expected 'const FIT_MESG_DEF *' but argument is of type 'const int *'
+  393 | FIT_UINT16 Fit_GetFieldOffset(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num);
+      |                               ~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:220:55: error: request for member 'reserved_1' in something not a structure or union
+  220 |                state->convert_table[state->mesg_index].reserved_1 = datum;
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:227:55: error: request for member 'arch' in something not a structure or union
+  227 |                state->convert_table[state->mesg_index].arch = datum;
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:234:55: error: request for member 'global_mesg_num' in something not a structure or union
+  234 |                state->convert_table[state->mesg_index].global_mesg_num = datum;
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:242:60: error: request for member 'arch' in something not a structure or union
+  242 |                if ((state->convert_table[state->mesg_index].arch & FIT_ARCH_ENDIAN_MASK) == FIT_ARCH_ENDIAN_BIG)
+      |                                                            ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:244:58: error: request for member 'global_mesg_num' in something not a structure or union
+  244 |                   state->convert_table[state->mesg_index].global_mesg_num <<= 8;
+      |                                                          ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:245:58: error: request for member 'global_mesg_num' in something not a structure or union
+  245 |                   state->convert_table[state->mesg_index].global_mesg_num |= datum;
+      |                                                          ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:249:58: error: request for member 'global_mesg_num' in something not a structure or union
+  249 |                   state->convert_table[state->mesg_index].global_mesg_num |= ((FIT_UINT16) datum << 8);
+      |                                                          ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:252:55: error: request for member 'num_fields' in something not a structure or union
+  252 |                state->convert_table[state->mesg_index].num_fields = 0; // Initialize.
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:253:88: error: request for member 'global_mesg_num' in something not a structure or union
+  253 |                state->mesg_def = Fit_GetMesgDef(state->convert_table[state->mesg_index].global_mesg_num);
+      |                                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:293:82: error: request for member 'num_fields' in something not a structure or union
+  293 |                   for (local_field_index = 0; local_field_index < state->mesg_def->num_fields; local_field_index++)
+      |                                                                                  ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:295:60: error: request for member 'fields' in something not a structure or union
+  295 |                      FIT_UINT8 field_size = state->mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, local_field_index)];
+      |                                                            ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:297:41: error: request for member 'fields' in something not a structure or union
+  297 |                      if (state->mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(field_def_num, local_field_index)] == datum)
+      |                                         ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:300:64: error: request for member 'fields' in something not a structure or union
+  300 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].num = state->field_num;
+      |                                                                ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:300:111: error: request for member 'num_fields' in something not a structure or union
+  300 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].num = state->field_num;
+      |                                                                                                               ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:301:64: error: request for member 'fields' in something not a structure or union
+  301 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].offset_in = state->mesg_offset;
+      |                                                                ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:301:111: error: request for member 'num_fields' in something not a structure or union
+  301 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].offset_in = state->mesg_offset;
+      |                                                                                                               ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:302:64: error: request for member 'fields' in something not a structure or union
+  302 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].offset_local = local_field_offset;
+      |                                                                ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:302:111: error: request for member 'num_fields' in something not a structure or union
+  302 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].offset_local = local_field_offset;
+      |                                                                                                               ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:303:64: error: request for member 'fields' in something not a structure or union
+  303 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size = field_size;
+      |                                                                ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:303:111: error: request for member 'num_fields' in something not a structure or union
+  303 |                         state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size = field_size;
+      |                                                                                                               ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:322:70: error: request for member 'fields' in something not a structure or union
+  322 |                   if (datum < state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size)
+      |                                                                      ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:322:117: error: request for member 'num_fields' in something not a structure or union
+  322 |                   if (datum < state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size)
+      |                                                                                                                     ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:323:61: error: request for member 'fields' in something not a structure or union
+  323 |                      state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size = datum;
+      |                                                             ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:323:108: error: request for member 'num_fields' in something not a structure or union
+  323 |                      state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].size = datum;
+      |                                                                                                            ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:335:55: error: request for member 'fields' in something not a structure or union
+  335 |                state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].base_type = datum;
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:335:102: error: request for member 'num_fields' in something not a structure or union
+  335 |                state->convert_table[state->mesg_index].fields[state->convert_table[state->mesg_index].num_fields].base_type = datum;
+      |                                                                                                      ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:336:55: error: request for member 'num_fields' in something not a structure or union
+  336 |                state->convert_table[state->mesg_index].num_fields++;
+      |                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:404:114: error: request for member 'num_fields' in something not a structure or union
+  404 |                if ((state->mesg_def != FIT_NULL) && (state->field_index < state->convert_table[state->mesg_index].num_fields))
+      |                                                                                                                  ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:406:85: error: request for member 'fields' in something not a structure or union
+  406 |                   if (state->mesg_offset == (state->convert_table[state->mesg_index].fields[state->field_index].offset_in + state->field_offset + 1))
+      |                                                                                     ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:408:95: error: request for member 'fields' in something not a structure or union
+  408 |                      FIT_UINT8 *field = &state->u.mesg[state->convert_table[state->mesg_index].fields[state->field_index].offset_local];
+      |                                                                                               ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:413:88: error: request for member 'fields' in something not a structure or union
+  413 |                      if (state->field_offset >= state->convert_table[state->mesg_index].fields[state->field_index].size)
+      |                                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:416:71: error: request for member 'fields' in something not a structure or union
+  416 |                               (state->convert_table[state->mesg_index].fields[state->field_index].base_type & FIT_BASE_TYPE_ENDIAN_FLAG) &&
+      |                                                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:417:72: error: request for member 'arch' in something not a structure or union
+  417 |                               ((state->convert_table[state->mesg_index].arch & FIT_ARCH_ENDIAN_MASK) != (Fit_GetArch() & FIT_ARCH_ENDIAN_MASK))
+      |                                                                        ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:425:75: error: request for member 'fields' in something not a structure or union
+  425 |                            index = state->convert_table[state->mesg_index].fields[state->field_index].base_type & FIT_BASE_TYPE_NUM_MASK;
+      |                                                                           ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:431:82: error: request for member 'fields' in something not a structure or union
+  431 |                            element_size = state->convert_table[state->mesg_index].fields[state->field_index].size / type_size;
+      |                                                                                  ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:445:68: error: request for member 'fields' in something not a structure or union
+  445 |                         if (state->convert_table[state->mesg_index].fields[state->field_index].base_type == FIT_BASE_TYPE_STRING)
+      |                                                                    ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:447:86: error: request for member 'fields' in something not a structure or union
+  447 |                            FIT_UINT8 length = state->convert_table[state->mesg_index].fields[state->field_index].size;
+      |                                                                                      ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:486:90: error: request for member 'num_fields' in something not a structure or union
+  486 |                         if (state->field_index >= state->convert_table[state->mesg_index].num_fields)
+      |                                                                                          ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:490:88: warning: passing argument 1 of 'Fit_GetFieldOffset' from incompatible pointer type [-Wincompatible-pointer-types]
+  490 |                                  FIT_UINT16 timestamp_offset = Fit_GetFieldOffset(state->mesg_def, FIT_FIELD_NUM_TIMESTAMP);
+      |                                                                                        ^
+      |                                                                                        |
+      |                                                                                        const int *
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:393:51: note: expected 'const FIT_MESG_DEF *' but argument is of type 'const int *'
+  393 | FIT_UINT16 Fit_GetFieldOffset(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num);
+      |                               ~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:494:94: error: 'FIT_DATE_TIME_INVALID' undeclared (first use in this function); did you mean 'FIT_ENUM_INVALID'?
+  494 |                                     if (*((FIT_UINT32 *)&state->u.mesg[timestamp_offset]) != FIT_DATE_TIME_INVALID)
+      |                                                                                              ^~~~~~~~~~~~~~~~~~~~~
+      |                                                                                              FIT_ENUM_INVALID
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:494:94: note: each undeclared identifier is reported only once for each function it appears in
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_SetMessageDefinition':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:542:20: warning: assignment to 'const int *' from incompatible pointer type 'FIT_MESG_DEF *' [-Wincompatible-pointer-types]
+  542 |    state->mesg_def = mesg_def;
+      |                    ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:550:15: error: conflicting types for 'FitConvert_GetMessageNumber'; have 'FIT_UINT16(void)' {aka 'short unsigned int(void)'}
+  550 |    FIT_UINT16 FitConvert_GetMessageNumber(void)
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:170:17: note: previous declaration of 'FitConvert_GetMessageNumber' with type 'int(void)'
+  170 |    FIT_MESG_NUM FitConvert_GetMessageNumber(void);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_GetMessageNumber':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:553:50: error: request for member 'global_mesg_num' in something not a structure or union
+  553 |    return state->convert_table[state->mesg_index].global_mesg_num;
+      |                                                  ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:560:21: error: conflicting types for 'FitConvert_GetMessageData'; have 'const FIT_UINT8 *(void)' {aka 'const unsigned char *(void)'}
+  560 |    const FIT_UINT8 *FitConvert_GetMessageData(void)
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.h:180:21: note: previous declaration of 'FitConvert_GetMessageData' with type 'const int *(void)'
+  180 |    const FIT_UINT8 *FitConvert_GetMessageData(void);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_RestoreFields':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:580:55: error: request for member 'num_fields' in something not a structure or union
+  580 |    for (field_index = 0; field_index < state->mesg_def->num_fields; field_index++)
+      |                                                       ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:582:84: error: request for member 'num_fields' in something not a structure or union
+  582 |       for (convert_field=0; convert_field < state->convert_table[state->mesg_index].num_fields; convert_field++)
+      |                                                                                    ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:584:53: error: request for member 'fields' in something not a structure or union
+  584 |          if (state->convert_table[state->mesg_index].fields[convert_field].offset_local == offset)
+      |                                                     ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:588:67: error: request for member 'num_fields' in something not a structure or union
+  588 |       if (convert_field == state->convert_table[state->mesg_index].num_fields)
+      |                                                                   ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:589:86: error: request for member 'fields' in something not a structure or union
+  589 |          memcpy(&state->u.mesg[offset], &((FIT_UINT8 *)mesg)[offset], state->mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field_index)]);
+      |                                                                                      ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:591:32: error: request for member 'fields' in something not a structure or union
+  591 |       offset += state->mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field_index)];
+      |                                ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_GetFieldSize':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:604:51: error: request for member 'fields' in something not a structure or union
+  604 |     while( state->convert_table[state->mesg_index].fields[field_index].num != field_num )
+      |                                                   ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:608:67: error: request for member 'num_fields' in something not a structure or union
+  608 |         if( field_index >= state->convert_table[state->mesg_index].num_fields )
+      |                                                                   ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:614:51: error: request for member 'fields' in something not a structure or union
+  614 |     return state->convert_table[state->mesg_index].fields[field_index].size;
+      |                                                   ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_GetMessageNumber':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:554:1: warning: control reaches end of non-void function [-Wreturn-type]
+  554 | }
+      | ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_GetMessageData':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:564:1: warning: control reaches end of non-void function [-Wreturn-type]
+  564 | }
+      | ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c: In function 'FitConvert_GetFieldSize':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/fit_convert.c:615:1: warning: control reaches end of non-void function [-Wreturn-type]
+  615 | }
+      | ^
+[141/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c.obj
+FAILED: zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c.obj 
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-gcc -DCONFIG_APP_BUILD_USE_FLASH_SECTIONS -DESP_PLATFORM -DKERNEL -DK_HEAP_MEM_POOL_SIZE=4096 -D_ANSI_SOURCE -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/opt/toolchains/zephyr/kernel/include -I/opt/toolchains/zephyr/arch/xtensa/include -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/. -I/opt/toolchains/modules/fs/littlefs -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_config/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_include/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_release/. -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr -I/opt/toolchains/zephyr/include -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated -I/opt/toolchains/zephyr/soc/espressif -I/opt/toolchains/zephyr/lib/libc/newlib/include -I/opt/toolchains/zephyr/soc/espressif/common/include -I/opt/toolchains/zephyr/soc/espressif/esp32s3/. -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include/bt -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/components/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/dma -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include/private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/platform_port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/log/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/xtensa -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/deprecated -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/gpio/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/uart/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/spi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_pm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/bootloader_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/heap/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_psram/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_mm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_netif/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_coex/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_wifi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_event/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include/esp_supplicant -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/crypto -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/utils -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/eap_peer -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/mbedtls/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include/boot -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager -isystem /opt/toolchains/zephyr/lib/libc/common/include -fno-strict-aliasing -Os -imacros /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fdiagnostics-color=always --sysroot=/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf -imacros /opt/toolchains/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/workspace/open_rowing_monitor_esp32=CMAKE_SOURCE_DIR -fmacro-prefix-map=/opt/toolchains/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/opt/toolchains=WEST_TOPDIR -ffunction-sections -fdata-sections -mlongcalls -fstrict-volatile-bitfields -std=c99 -MD -MT zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c.obj -MF zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c.obj.d -o zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c.obj -c /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c
+In file included from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c:1:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.h:12:36: error: 'FIT_MESG_NUM' undeclared here (not in a function); did you mean 'FIT_MESG_DEF'?
+   12 | #define FIT_MESG_NUM_FILE_ID     ((FIT_MESG_NUM)0)
+      |                                    ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c:22:24: note: in expansion of macro 'FIT_MESG_NUM_FILE_ID'
+   22 |    0, FIT_ARCH_ENDIAN, FIT_MESG_NUM_FILE_ID, FIT_FILE_ID_MESG_DEF_SIZE,
+      |                        ^~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.h:12:49: error: expected ')' before numeric constant
+   12 | #define FIT_MESG_NUM_FILE_ID     ((FIT_MESG_NUM)0)
+      |                                  ~              ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c:22:24: note: in expansion of macro 'FIT_MESG_NUM_FILE_ID'
+   22 |    0, FIT_ARCH_ENDIAN, FIT_MESG_NUM_FILE_ID, FIT_FILE_ID_MESG_DEF_SIZE,
+      |                        ^~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.h:14:49: error: expected ')' before numeric constant
+   14 | #define FIT_MESG_NUM_RECORD      ((FIT_MESG_NUM)20)
+      |                                  ~              ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/fit_profile.c:34:24: note: in expansion of macro 'FIT_MESG_NUM_RECORD'
+   34 |    0, FIT_ARCH_ENDIAN, FIT_MESG_NUM_RECORD, FIT_RECORD_MESG_DEF_SIZE,
+      |                        ^~~~~~~~~~~~~~~~~~~
+[142/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/fit_product.c.obj
+[143/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c.obj
+FAILED: zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c.obj 
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-gcc -DCONFIG_APP_BUILD_USE_FLASH_SECTIONS -DESP_PLATFORM -DKERNEL -DK_HEAP_MEM_POOL_SIZE=4096 -D_ANSI_SOURCE -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/opt/toolchains/zephyr/kernel/include -I/opt/toolchains/zephyr/arch/xtensa/include -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/. -I/opt/toolchains/modules/fs/littlefs -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_config/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_include/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_release/. -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr -I/opt/toolchains/zephyr/include -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated -I/opt/toolchains/zephyr/soc/espressif -I/opt/toolchains/zephyr/lib/libc/newlib/include -I/opt/toolchains/zephyr/soc/espressif/common/include -I/opt/toolchains/zephyr/soc/espressif/esp32s3/. -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include/bt -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/components/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/dma -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include/private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/platform_port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/log/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/xtensa -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/deprecated -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/gpio/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/uart/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/spi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_pm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/bootloader_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/heap/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_psram/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_mm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_netif/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_coex/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_wifi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_event/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include/esp_supplicant -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/crypto -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/utils -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/eap_peer -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/mbedtls/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include/boot -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager -isystem /opt/toolchains/zephyr/lib/libc/common/include -fno-strict-aliasing -Os -imacros /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fdiagnostics-color=always --sysroot=/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf -imacros /opt/toolchains/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/workspace/open_rowing_monitor_esp32=CMAKE_SOURCE_DIR -fmacro-prefix-map=/opt/toolchains/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/opt/toolchains=WEST_TOPDIR -ffunction-sections -fdata-sections -mlongcalls -fstrict-volatile-bitfields -std=c99 -MD -MT zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c.obj -MF zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c.obj.d -o zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c.obj -c /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:23:7: error: unknown type name 'FIT_UINT8'
+   23 | const FIT_UINT8 fit_base_type_sizes[FIT_BASE_TYPES] =
+      |       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:23:37: error: 'FIT_BASE_TYPES' undeclared here (not in a function)
+   23 | const FIT_UINT8 fit_base_type_sizes[FIT_BASE_TYPES] =
+      |                                     ^~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:25:11: error: 'FIT_ENUM' undeclared here (not in a function)
+   25 |    sizeof(FIT_ENUM),
+      |           ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:26:11: error: 'FIT_SINT8' undeclared here (not in a function)
+   26 |    sizeof(FIT_SINT8),
+      |           ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:27:11: error: 'FIT_UINT8' undeclared here (not in a function)
+   27 |    sizeof(FIT_UINT8),
+      |           ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:28:11: error: 'FIT_SINT16' undeclared here (not in a function)
+   28 |    sizeof(FIT_SINT16),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:29:11: error: 'FIT_UINT16' undeclared here (not in a function)
+   29 |    sizeof(FIT_UINT16),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:30:11: error: 'FIT_SINT32' undeclared here (not in a function)
+   30 |    sizeof(FIT_SINT32),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:31:11: error: 'FIT_UINT32' undeclared here (not in a function)
+   31 |    sizeof(FIT_UINT32),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:32:11: error: 'FIT_STRING' undeclared here (not in a function)
+   32 |    sizeof(FIT_STRING),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:33:11: error: 'FIT_FLOAT32' undeclared here (not in a function)
+   33 |    sizeof(FIT_FLOAT32),
+      |           ^~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:34:11: error: 'FIT_FLOAT64' undeclared here (not in a function)
+   34 |    sizeof(FIT_FLOAT64),
+      |           ^~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:35:11: error: 'FIT_UINT8Z' undeclared here (not in a function)
+   35 |    sizeof(FIT_UINT8Z),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:36:11: error: 'FIT_UINT16Z' undeclared here (not in a function)
+   36 |    sizeof(FIT_UINT16Z),
+      |           ^~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:37:11: error: 'FIT_UINT32Z' undeclared here (not in a function)
+   37 |    sizeof(FIT_UINT32Z),
+      |           ^~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:38:11: error: 'FIT_BYTE' undeclared here (not in a function)
+   38 |    sizeof(FIT_BYTE),
+      |           ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:39:11: error: 'FIT_SINT64' undeclared here (not in a function)
+   39 |    sizeof(FIT_SINT64),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:40:11: error: 'FIT_UINT64' undeclared here (not in a function)
+   40 |    sizeof(FIT_UINT64),
+      |           ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:41:11: error: 'FIT_UINT64Z' undeclared here (not in a function)
+   41 |    sizeof(FIT_UINT64Z),
+      |           ^~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:47:5: error: expected specifier-qualifier-list before 'FIT_UINT8'
+   47 |     FIT_UINT8       uint8_value[8];
+      |     ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:54:9: error: extra brace group at end of initializer
+   54 |         {
+      |         ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:54:9: note: (near initialization for 'invalid_float')
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:54:9: warning: excess elements in union initializer
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:54:9: note: (near initialization for 'invalid_float')
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:66:16: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_enum_invalid'
+   66 | const FIT_ENUM fit_enum_invalid = FIT_ENUM_INVALID;
+      |                ^~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:67:17: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_sint8_invalid'
+   67 | const FIT_SINT8 fit_sint8_invalid = FIT_SINT8_INVALID;
+      |                 ^~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:68:17: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint8_invalid'
+   68 | const FIT_UINT8 fit_uint8_invalid = FIT_UINT8_INVALID;
+      |                 ^~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:69:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_sint16_invalid'
+   69 | const FIT_SINT16 fit_sint16_invalid = FIT_SINT16_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:70:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint16_invalid'
+   70 | const FIT_UINT16 fit_uint16_invalid = FIT_UINT16_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:71:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_sint32_invalid'
+   71 | const FIT_SINT32 fit_sint32_invalid = FIT_SINT32_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:72:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint32_invalid'
+   72 | const FIT_UINT32 fit_uint32_invalid = FIT_UINT32_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:73:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_string_invalid'
+   73 | const FIT_STRING fit_string_invalid = FIT_STRING_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:74:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint8z_invalid'
+   74 | const FIT_UINT8Z fit_uint8z_invalid = FIT_UINT8Z_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:75:19: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint16z_invalid'
+   75 | const FIT_UINT16Z fit_uint16z_invalid = FIT_UINT16Z_INVALID;
+      |                   ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:76:19: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint32z_invalid'
+   76 | const FIT_UINT32Z fit_uint32z_invalid = FIT_UINT32Z_INVALID;
+      |                   ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:77:16: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_byte_invalid'
+   77 | const FIT_BYTE fit_byte_invalid = FIT_BYTE_INVALID;
+      |                ^~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:78:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_sint64_invalid'
+   78 | const FIT_SINT64 fit_sint64_invalid = FIT_SINT64_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:79:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint64_invalid'
+   79 | const FIT_UINT64 fit_uint64_invalid = FIT_UINT64_INVALID;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:80:19: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fit_uint64z_invalid'
+   80 | const FIT_UINT64Z fit_uint64z_invalid = FIT_UINT64Z_INVALID;
+      |                   ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:82:7: error: unknown type name 'FIT_CONST_UINT8_PTR'
+   82 | const FIT_CONST_UINT8_PTR fit_base_type_invalids[FIT_BASE_TYPES] =
+      |       ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:84:5: error: 'FIT_CONST_UINT8_PTR' undeclared here (not in a function)
+   84 |    (FIT_CONST_UINT8_PTR)&fit_enum_invalid,
+      |     ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:84:26: error: 'fit_enum_invalid' undeclared here (not in a function)
+   84 |    (FIT_CONST_UINT8_PTR)&fit_enum_invalid,
+      |                          ^~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:85:26: error: 'fit_sint8_invalid' undeclared here (not in a function); did you mean 'fit_base_type_invalids'?
+   85 |    (FIT_CONST_UINT8_PTR)&fit_sint8_invalid,
+      |                          ^~~~~~~~~~~~~~~~~
+      |                          fit_base_type_invalids
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:86:26: error: 'fit_uint8_invalid' undeclared here (not in a function)
+   86 |    (FIT_CONST_UINT8_PTR)&fit_uint8_invalid,
+      |                          ^~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:87:26: error: 'fit_sint16_invalid' undeclared here (not in a function); did you mean 'fit_base_type_invalids'?
+   87 |    (FIT_CONST_UINT8_PTR)&fit_sint16_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+      |                          fit_base_type_invalids
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:88:26: error: 'fit_uint16_invalid' undeclared here (not in a function)
+   88 |    (FIT_CONST_UINT8_PTR)&fit_uint16_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:89:26: error: 'fit_sint32_invalid' undeclared here (not in a function); did you mean 'fit_base_type_invalids'?
+   89 |    (FIT_CONST_UINT8_PTR)&fit_sint32_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+      |                          fit_base_type_invalids
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:90:26: error: 'fit_uint32_invalid' undeclared here (not in a function)
+   90 |    (FIT_CONST_UINT8_PTR)&fit_uint32_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:91:26: error: 'fit_string_invalid' undeclared here (not in a function)
+   91 |    (FIT_CONST_UINT8_PTR)&fit_string_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:92:39: error: 'FIT_INVALID_FLOAT' has no member named 'float32_value'
+   92 |    (FIT_CONST_UINT8_PTR)&invalid_float.float32_value,
+      |                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:93:39: error: 'FIT_INVALID_FLOAT' has no member named 'float64_value'
+   93 |    (FIT_CONST_UINT8_PTR)&invalid_float.float64_value,
+      |                                       ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:94:26: error: 'fit_uint8z_invalid' undeclared here (not in a function)
+   94 |    (FIT_CONST_UINT8_PTR)&fit_uint8z_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:95:26: error: 'fit_uint16z_invalid' undeclared here (not in a function)
+   95 |    (FIT_CONST_UINT8_PTR)&fit_uint16z_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:96:26: error: 'fit_uint32z_invalid' undeclared here (not in a function)
+   96 |    (FIT_CONST_UINT8_PTR)&fit_uint32z_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:97:26: error: 'fit_byte_invalid' undeclared here (not in a function); did you mean 'fit_base_type_invalids'?
+   97 |    (FIT_CONST_UINT8_PTR)&fit_byte_invalid,
+      |                          ^~~~~~~~~~~~~~~~
+      |                          fit_base_type_invalids
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:98:26: error: 'fit_sint64_invalid' undeclared here (not in a function); did you mean 'fit_base_type_invalids'?
+   98 |    (FIT_CONST_UINT8_PTR)&fit_sint64_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+      |                          fit_base_type_invalids
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:99:26: error: 'fit_uint64_invalid' undeclared here (not in a function)
+   99 |    (FIT_CONST_UINT8_PTR)&fit_uint64_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:100:26: error: 'fit_uint64z_invalid' undeclared here (not in a function)
+  100 |    (FIT_CONST_UINT8_PTR)&fit_uint64z_invalid,
+      |                          ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:108:1: error: unknown type name 'FIT_UINT8'
+  108 | FIT_UINT8 Fit_GetArch(void)
+      | ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_GetArch':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:110:21: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'arch'
+  110 |    const FIT_UINT16 arch = 0x0100;
+      |                     ^~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:110:21: error: 'arch' undeclared (first use in this function)
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:110:21: note: each undeclared identifier is reported only once for each function it appears in
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:111:25: error: expected expression before ')' token
+  111 |    return (*(FIT_UINT8 *)&arch);
+      |                         ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:114:7: error: unknown type name 'FIT_MESG_DEF'
+  114 | const FIT_MESG_DEF *Fit_GetMesgDef(FIT_UINT16 global_mesg_num)
+      |       ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:114:36: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  114 | const FIT_MESG_DEF *Fit_GetMesgDef(FIT_UINT16 global_mesg_num)
+      |                                    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:127:7: error: unknown type name 'FIT_MESG_DEF'
+  127 | const FIT_MESG_DEF *Fit_GetMesgDefFromEnum(FIT_UINT32 fit_mesg_num)
+      |       ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:127:44: error: expected declaration specifiers or '...' before 'FIT_UINT32'
+  127 | const FIT_MESG_DEF *Fit_GetMesgDefFromEnum(FIT_UINT32 fit_mesg_num)
+      |                                            ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:138:1: error: unknown type name 'FIT_UINT16'
+  138 | FIT_UINT16 Fit_GetMesgDefSize(const FIT_MESG_DEF *mesg_def)
+      | ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:138:37: error: unknown type name 'FIT_MESG_DEF'
+  138 | FIT_UINT16 Fit_GetMesgDefSize(const FIT_MESG_DEF *mesg_def)
+      |                                     ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_GetMesgDefSize':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:140:20: error: 'FIT_NULL' undeclared (first use in this function)
+  140 |    if (mesg_def == FIT_NULL)
+      |                    ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:143:11: warning: implicit declaration of function 'FIT_STRUCT_OFFSET' [-Wimplicit-function-declaration]
+  143 |    return FIT_STRUCT_OFFSET(fields, FIT_MESG_DEF) + (FIT_UINT16)mesg_def->num_fields * FIT_FIELD_DEF_SIZE;
+      |           ^~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:143:29: error: 'fields' undeclared (first use in this function)
+  143 |    return FIT_STRUCT_OFFSET(fields, FIT_MESG_DEF) + (FIT_UINT16)mesg_def->num_fields * FIT_FIELD_DEF_SIZE;
+      |                             ^~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:143:37: error: 'FIT_MESG_DEF' undeclared (first use in this function)
+  143 |    return FIT_STRUCT_OFFSET(fields, FIT_MESG_DEF) + (FIT_UINT16)mesg_def->num_fields * FIT_FIELD_DEF_SIZE;
+      |                                     ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:143:65: error: expected ';' before 'mesg_def'
+  143 |    return FIT_STRUCT_OFFSET(fields, FIT_MESG_DEF) + (FIT_UINT16)mesg_def->num_fields * FIT_FIELD_DEF_SIZE;
+      |                                                                 ^~~~~~~~
+      |                                                                 ;
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:147:1: error: unknown type name 'FIT_UINT16'
+  147 | FIT_UINT16 Fit_GetMesgSize(FIT_UINT16 global_mesg_num)
+      | ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:147:28: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  147 | FIT_UINT16 Fit_GetMesgSize(FIT_UINT16 global_mesg_num)
+      |                            ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:168:1: error: unknown type name 'FIT_UINT16'
+  168 | FIT_UINT16 Fit_GetMesgSizeFromEnum(FIT_UINT32 fit_mesg_num)
+      | ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:168:36: error: expected declaration specifiers or '...' before 'FIT_UINT32'
+  168 | FIT_UINT16 Fit_GetMesgSizeFromEnum(FIT_UINT32 fit_mesg_num)
+      |                                    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:188:1: error: unknown type name 'FIT_BOOL'
+  188 | FIT_BOOL Fit_InitMesg(const FIT_MESG_DEF *mesg_def, void *mesg)
+      | ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:188:29: error: unknown type name 'FIT_MESG_DEF'
+  188 | FIT_BOOL Fit_InitMesg(const FIT_MESG_DEF *mesg_def, void *mesg)
+      |                             ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_InitMesg':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:190:15: error: 'mesg_buf' undeclared (first use in this function); did you mean 'mesg_def'?
+  190 |    FIT_UINT8 *mesg_buf = (FIT_UINT8 *) mesg;
+      |               ^~~~~~~~
+      |               mesg_def
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:190:38: error: expected expression before ')' token
+  190 |    FIT_UINT8 *mesg_buf = (FIT_UINT8 *) mesg;
+      |                                      ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:191:13: error: expected ';' before 'field'
+  191 |    FIT_UINT8 field;
+      |             ^~~~~~
+      |             ;
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:193:20: error: 'FIT_NULL' undeclared (first use in this function)
+  193 |    if (mesg_def == FIT_NULL)
+      |                    ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:194:14: error: 'FIT_FALSE' undeclared (first use in this function)
+  194 |       return FIT_FALSE;
+      |              ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:196:9: error: 'field' undeclared (first use in this function)
+  196 |    for (field = 0; field < mesg_def->num_fields; field++)
+      |         ^~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:196:36: error: request for member 'num_fields' in something not a structure or union
+  196 |    for (field = 0; field < mesg_def->num_fields; field++)
+      |                                    ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:198:16: error: expected ';' before 'base_type_num'
+  198 |       FIT_UINT8 base_type_num = mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(base_type, field)] & FIT_BASE_TYPE_NUM_MASK;
+      |                ^~~~~~~~~~~~~~
+      |                ;
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:199:16: error: expected ';' before 'base_type_size'
+  199 |       FIT_UINT8 base_type_size;
+      |                ^~~~~~~~~~~~~~~
+      |                ;
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:200:16: error: expected ';' before 'field_size'
+  200 |       FIT_UINT8 field_size;
+      |                ^~~~~~~~~~~
+      |                ;
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:202:11: error: 'base_type_num' undeclared (first use in this function)
+  202 |       if (base_type_num >= FIT_BASE_TYPES)
+      |           ^~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:205:7: error: 'base_type_size' undeclared (first use in this function); did you mean 'fit_base_type_sizes'?
+  205 |       base_type_size = fit_base_type_sizes[base_type_num];
+      |       ^~~~~~~~~~~~~~
+      |       fit_base_type_sizes
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:207:12: error: 'field_size' undeclared (first use in this function)
+  207 |       for (field_size = 0; field_size < mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field)]; field_size += base_type_size)
+      |            ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:207:49: error: request for member 'fields' in something not a structure or union
+  207 |       for (field_size = 0; field_size < mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field)]; field_size += base_type_size)
+      |                                                 ^~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:207:58: warning: implicit declaration of function 'FIT_MESG_DEF_FIELD_OFFSET' [-Wimplicit-function-declaration]
+  207 |       for (field_size = 0; field_size < mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field)]; field_size += base_type_size)
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:207:84: error: 'size' undeclared (first use in this function); did you mean 'size_t'?
+  207 |       for (field_size = 0; field_size < mesg_def->fields[FIT_MESG_DEF_FIELD_OFFSET(size, field)]; field_size += base_type_size)
+      |                                                                                    ^~~~
+      |                                                                                    size_t
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:214:11: error: 'FIT_TRUE' undeclared (first use in this function)
+  214 |    return FIT_TRUE;
+      |           ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: At top level:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:218:1: error: unknown type name 'FIT_UINT16'
+  218 | FIT_UINT16 Fit_GetFieldOffset(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      | ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:218:37: error: unknown type name 'FIT_MESG_DEF'
+  218 | FIT_UINT16 Fit_GetFieldOffset(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      |                                     ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:218:61: error: expected declaration specifiers or '...' before 'FIT_UINT8'
+  218 | FIT_UINT16 Fit_GetFieldOffset(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      |                                                             ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:238:1: error: unknown type name 'FIT_FIELD_DEF'
+  238 | FIT_FIELD_DEF Fit_GetFieldDef(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      | ^~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:238:37: error: unknown type name 'FIT_MESG_DEF'
+  238 | FIT_FIELD_DEF Fit_GetFieldDef(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      |                                     ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:238:61: error: expected declaration specifiers or '...' before 'FIT_UINT8'
+  238 | FIT_FIELD_DEF Fit_GetFieldDef(const FIT_MESG_DEF *mesg_def, FIT_UINT8 field_def_num)
+      |                                                             ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:1: error: unknown type name 'FIT_UINT8'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      | ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:29: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      |                             ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:57: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      |                                                         ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:83: error: expected declaration specifiers or '...' before 'FIT_UINT32'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      |                                                                                   ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:103: error: unknown type name 'FIT_READ_BYTES_FUNC'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      |                                                                                                       ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:267:140: error: unknown type name 'FIT_BOOL'
+  267 | FIT_UINT8 Fit_LookupMessage(FIT_UINT16 global_mesg_num, FIT_UINT16 message_index, FIT_UINT32 *offset, FIT_READ_BYTES_FUNC read_bytes_func, FIT_BOOL read_header)
+      |                                                                                                                                            ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:386:1: error: unknown type name 'FIT_UINT32'
+  386 | FIT_UINT32 Fit_GetFileMesgOffset(const FIT_FILE_DEF *file_def, FIT_UINT16 mesg_num, FIT_UINT16 mesg_index)
+      | ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:386:40: error: unknown type name 'FIT_FILE_DEF'
+  386 | FIT_UINT32 Fit_GetFileMesgOffset(const FIT_FILE_DEF *file_def, FIT_UINT16 mesg_num, FIT_UINT16 mesg_index)
+      |                                        ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:386:64: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  386 | FIT_UINT32 Fit_GetFileMesgOffset(const FIT_FILE_DEF *file_def, FIT_UINT16 mesg_num, FIT_UINT16 mesg_index)
+      |                                                                ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:386:85: error: expected declaration specifiers or '...' before 'FIT_UINT16'
+  386 | FIT_UINT32 Fit_GetFileMesgOffset(const FIT_FILE_DEF *file_def, FIT_UINT16 mesg_num, FIT_UINT16 mesg_index)
+      |                                                                                     ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_GetArch':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:112:1: warning: control reaches end of non-void function [-Wreturn-type]
+  112 | }
+      | ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_GetMesgDefSize':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:144:1: warning: control reaches end of non-void function [-Wreturn-type]
+  144 | }
+      | ^
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c: In function 'Fit_InitMesg':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/fit.c:215:1: warning: control reaches end of non-void function [-Wreturn-type]
+  215 | }
+      | ^
+[144/245] Building C object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c.obj
+FAILED: zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c.obj 
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-gcc -DCONFIG_APP_BUILD_USE_FLASH_SECTIONS -DESP_PLATFORM -DKERNEL -DK_HEAP_MEM_POOL_SIZE=4096 -D_ANSI_SOURCE -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/opt/toolchains/zephyr/kernel/include -I/opt/toolchains/zephyr/arch/xtensa/include -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/. -I/opt/toolchains/modules/fs/littlefs -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_config/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_include/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_release/. -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr -I/opt/toolchains/zephyr/include -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated -I/opt/toolchains/zephyr/soc/espressif -I/opt/toolchains/zephyr/lib/libc/newlib/include -I/opt/toolchains/zephyr/soc/espressif/common/include -I/opt/toolchains/zephyr/soc/espressif/esp32s3/. -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include/bt -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/components/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/dma -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include/private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/platform_port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/log/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/xtensa -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/deprecated -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/gpio/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/uart/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/spi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_pm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/bootloader_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/heap/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_psram/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_mm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_netif/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_coex/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_wifi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_event/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include/esp_supplicant -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/crypto -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/utils -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/eap_peer -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/mbedtls/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include/boot -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager -isystem /opt/toolchains/zephyr/lib/libc/common/include -fno-strict-aliasing -Os -imacros /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fdiagnostics-color=always --sysroot=/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf -imacros /opt/toolchains/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/workspace/open_rowing_monitor_esp32=CMAKE_SOURCE_DIR -fmacro-prefix-map=/opt/toolchains/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/opt/toolchains=WEST_TOPDIR -ffunction-sections -fdata-sections -mlongcalls -fstrict-volatile-bitfields -std=c99 -MD -MT zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c.obj -MF zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c.obj.d -o zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c.obj -c /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c
+In file included from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.h:19,
+                 from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/fit_ram.c:17:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:58:4: error: unknown type name 'FIT_UINT32'
+   58 |    FIT_UINT32 file_bytes_left;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:59:4: error: unknown type name 'FIT_UINT32'
+   59 |    FIT_UINT32 data_offset;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:61:7: error: unknown type name 'FIT_UINT32'
+   61 |       FIT_UINT32 timestamp;
+      |       ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:65:7: error: unknown type name 'FIT_FILE_HDR'
+   65 |       FIT_FILE_HDR file_hdr;
+      |       ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:66:7: error: unknown type name 'FIT_UINT8'
+   66 |       FIT_UINT8 mesg[FIT_MESG_SIZE];
+      |       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:66:22: error: 'FIT_MESG_SIZE' undeclared here (not in a function)
+   66 |       FIT_UINT8 mesg[FIT_MESG_SIZE];
+      |                      ^~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:68:4: error: unknown type name 'FIT_MESG_CONVERT'
+   68 |    FIT_MESG_CONVERT convert_table[FIT_LOCAL_MESGS];
+      |    ^~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:69:10: error: unknown type name 'FIT_MESG_DEF'
+   69 |    const FIT_MESG_DEF *mesg_def;
+      |          ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:71:7: error: unknown type name 'FIT_UINT16'
+   71 |       FIT_UINT16 crc;
+      |       ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:74:4: error: unknown type name 'FIT_BOOL'
+   74 |    FIT_BOOL has_dev_data;
+      |    ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:75:4: error: unknown type name 'FIT_UINT8'
+   75 |    FIT_UINT8 mesg_index;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:76:4: error: unknown type name 'FIT_UINT16'
+   76 |    FIT_UINT16 mesg_sizes[FIT_MAX_LOCAL_MESGS];
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:76:26: error: 'FIT_MAX_LOCAL_MESGS' undeclared here (not in a function); did you mean 'FIT_LOCAL_MESGS'?
+   76 |    FIT_UINT16 mesg_sizes[FIT_MAX_LOCAL_MESGS];
+      |                          ^~~~~~~~~~~~~~~~~~~
+      |                          FIT_LOCAL_MESGS
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:77:4: error: unknown type name 'FIT_UINT8'
+   77 |    FIT_UINT8 dev_data_sizes[FIT_MAX_LOCAL_MESGS];
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:78:4: error: unknown type name 'FIT_UINT16'
+   78 |    FIT_UINT16 mesg_offset;
+      |    ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:79:4: error: unknown type name 'FIT_UINT8'
+   79 |    FIT_UINT8 num_fields;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:80:4: error: unknown type name 'FIT_UINT8'
+   80 |    FIT_UINT8 field_num;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:81:4: error: unknown type name 'FIT_UINT8'
+   81 |    FIT_UINT8 field_index;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:82:4: error: unknown type name 'FIT_UINT8'
+   82 |    FIT_UINT8 field_offset;
+      |    ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:84:7: error: unknown type name 'FIT_UINT8'
+   84 |       FIT_UINT8 last_time_offset;
+      |       ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:103:25: error: unknown type name 'FIT_BOOL'
+  103 |    void FitConvert_Init(FIT_BOOL read_file_header);
+      |                         ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:125:57: error: unknown type name 'FIT_UINT32'
+  125 |    FIT_CONVERT_RETURN FitConvert_Read(const void *data, FIT_UINT32 size);
+      |                                                         ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:151:60: error: unknown type name 'FIT_UINT32'
+  151 |    FIT_CONVERT_RETURN FitConvert_ReadExt(const void *data, FIT_UINT32 size, FIT_BOOL return_message_numbers);
+      |                                                            ^~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:151:77: error: unknown type name 'FIT_BOOL'
+  151 |    FIT_CONVERT_RETURN FitConvert_ReadExt(const void *data, FIT_UINT32 size, FIT_BOOL return_message_numbers);
+      |                                                                             ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:161:41: error: unknown type name 'FIT_MESG_DEF'
+  161 |    void FitConvert_SetMessageDefinition(FIT_MESG_DEF *mesg_def);
+      |                                         ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:170:4: error: unknown type name 'FIT_MESG_NUM'
+  170 |    FIT_MESG_NUM FitConvert_GetMessageNumber(void);
+      |    ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:180:10: error: unknown type name 'FIT_UINT8'
+  180 |    const FIT_UINT8 *FitConvert_GetMessageData(void);
+      |          ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:200:5: error: unknown type name 'FIT_UINT8'
+  200 |     FIT_UINT8 FitConvert_GetFieldSize(FIT_UINT8 field);
+      |     ^~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:200:39: error: unknown type name 'FIT_UINT8'
+  200 |     FIT_UINT8 FitConvert_GetFieldSize(FIT_UINT8 field);
+      |                                       ^~~~~~~~~
+[145/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/port/heap/heap_caps_zephyr.c.obj
+[146/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/port/host_flash/cache_utils.c.obj
+[147/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_timer/src/esp_timer.c.obj
+[148/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/src/soc_flash_init.c.obj
+[149/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/components/esp_hw_support/sleep_modes.c.obj
+[150/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/port/bootloader/bootloader_flash.c.obj
+[151/245] Building C object zephyr/CMakeFiles/zephyr.dir/opt/toolchains/modules/hal/espressif/zephyr/common/flash_init.c.obj
+[152/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/MovingAverager.cpp.obj
+[153/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/MovingFlankDetector.cpp.obj
+[154/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/RowingEngine.cpp.obj
+[155/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/GpioTimerService.cpp.obj
+[156/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/StorageManager.cpp.obj
+[157/245] Building CXX object zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp.obj
+FAILED: zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp.obj 
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-g++ -DCONFIG_APP_BUILD_USE_FLASH_SECTIONS -DESP_PLATFORM -DKERNEL -DK_HEAP_MEM_POOL_SIZE=4096 -D_ANSI_SOURCE -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/opt/toolchains/zephyr/kernel/include -I/opt/toolchains/zephyr/arch/xtensa/include -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager/. -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService/. -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/. -I/opt/toolchains/modules/fs/littlefs -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_config/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_crc/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_include/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_product/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_ram/. -I/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_release/. -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr -I/opt/toolchains/zephyr/include -I/workspace/open_rowing_monitor_esp32/build/zephyr/include/generated -I/opt/toolchains/zephyr/soc/espressif -I/opt/toolchains/zephyr/lib/libc/newlib/include -I/opt/toolchains/zephyr/soc/espressif/common/include -I/opt/toolchains/zephyr/soc/espressif/esp32s3/. -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/include/bt -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../esp_shared/components/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/efuse/esp32s3/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_common/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/dma -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/include/soc/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_hw_support/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_rom/include/esp32s3 -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_system/port/include/private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/include/hal -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/hal/platform_port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/log/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/esp32s3/ld -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/soc/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/xtensa/include/xtensa -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_timer/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/deprecated -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/gpio/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/uart/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/touch_sensor/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/driver/spi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/spi_flash/include/spi_flash -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_pm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/bootloader_flash/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/private_include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/bootloader_support/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/heap/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_psram/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_mm/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_netif/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_coex/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/include/esp_private -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_phy/esp32s3/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_wifi/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/esp_event/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/esp_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/include/esp_supplicant -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/crypto -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/utils -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/wpa_supplicant/src/eap_peer -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../../components/mbedtls/port/include -I/opt/toolchains/modules/hal/espressif/zephyr/esp32s3/../port/include/boot -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings/. -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingData -I/workspace/open_rowing_monitor_esp32/modules/rowing_core/RowingSettings -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/RowingEngine -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingFlankDetector -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/MovingAverager -I/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/GpioTimerService -I/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager -isystem /opt/toolchains/zephyr/lib/libc/common/include -fno-strict-aliasing -Os -fcheck-new -std=c++17 -Wno-register -fno-exceptions -fno-rtti -imacros /workspace/open_rowing_monitor_esp32/build/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fdiagnostics-color=always --sysroot=/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf -imacros /opt/toolchains/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/workspace/open_rowing_monitor_esp32=CMAKE_SOURCE_DIR -fmacro-prefix-map=/opt/toolchains/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/opt/toolchains=WEST_TOPDIR -ffunction-sections -fdata-sections -mlongcalls -fstrict-volatile-bitfields -MD -MT zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp.obj -MF zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp.obj.d -o zephyr/CMakeFiles/zephyr.dir/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp.obj -c /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp
+In file included from /workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/./fit_profile.h:5,
+                 from /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.h:10,
+                 from /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:1:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:306:11: warning: #warning "Define FIT_STRUCT_OFFSET_USE_STDDEF_OFFSETOF to prevent C Style Cast warning when using FIT_STRUCT_OFFSET" [-Wcpp]
+  306 |          #warning "Define FIT_STRUCT_OFFSET_USE_STDDEF_OFFSETOF to prevent C Style Cast warning when using FIT_STRUCT_OFFSET"
+      |           ^~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:27:26: error: conflicting declaration 'typedef long unsigned int uint32_t'
+   27 |    typedef unsigned long uint32_t;
+      |                          ^~~~~~~~
+In file included from /opt/toolchains/zephyr/lib/libc/newlib/include/stdint.h:19,
+                 from /root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/include/c++/12.2.0/cstdint:41,
+                 from /root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/include/c++/12.2.0/bits/char_traits.h:731,
+                 from /root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/include/c++/12.2.0/string:40,
+                 from /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.h:3:
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/sys-include/sys/_stdint.h:48:20: note: previous declaration as 'typedef __uint32_t uint32_t'
+   48 | typedef __uint32_t uint32_t ;
+      |                    ^~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit/./fit.h:28:24: error: conflicting declaration 'typedef long int int32_t'
+   28 |    typedef signed long int32_t;
+      |                        ^~~~~~~
+/root/zephyr-sdk-0.17.0/xtensa-espressif_esp32s3_zephyr-elf/xtensa-espressif_esp32s3_zephyr-elf/sys-include/sys/_stdint.h:44:19: note: previous declaration as 'typedef __int32_t int32_t'
+   44 | typedef __int32_t int32_t ;
+      |                   ^~~~~~~
+In file included from /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.h:11:
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:66:22: error: 'FIT_MESG_SIZE' was not declared in this scope; did you mean 'FIT_MESG_DEF'?
+   66 |       FIT_UINT8 mesg[FIT_MESG_SIZE];
+      |                      ^~~~~~~~~~~~~
+      |                      FIT_MESG_DEF
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:68:4: error: 'FIT_MESG_CONVERT' does not name a type; did you mean 'FIT_MESG_OFFSET'?
+   68 |    FIT_MESG_CONVERT convert_table[FIT_LOCAL_MESGS];
+      |    ^~~~~~~~~~~~~~~~
+      |    FIT_MESG_OFFSET
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_convert/./fit_convert.h:170:4: error: 'FIT_MESG_NUM' does not name a type; did you mean 'FIT_MESG_DEF'?
+  170 |    FIT_MESG_NUM FitConvert_GetMessageNumber(void);
+      |    ^~~~~~~~~~~~
+      |    FIT_MESG_DEF
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.h:37:5: error: 'FIT_DATE_TIME' does not name a type
+   37 |     FIT_DATE_TIME getFitTimestamp(double sessionTimeS);
+      |     ^~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp: In member function 'void FitRecorder::logRecord(const RowingData&)':
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/./fit_profile.h:14:36: error: 'FIT_MESG_NUM' was not declared in this scope; did you mean 'FIT_MESG_DEF'?
+   14 | #define FIT_MESG_NUM_RECORD      ((FIT_MESG_NUM)20)
+      |                                    ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:28:54: note: in expansion of macro 'FIT_MESG_NUM_RECORD'
+   28 |         const FIT_MESG_DEF* mesgDef = Fit_GetMesgDef(FIT_MESG_NUM_RECORD);
+      |                                                      ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/./fit_profile.h:14:49: error: expected ')' before numeric constant
+   14 | #define FIT_MESG_NUM_RECORD      ((FIT_MESG_NUM)20)
+      |                                  ~              ^~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:28:54: note: in expansion of macro 'FIT_MESG_NUM_RECORD'
+   28 |         const FIT_MESG_DEF* mesgDef = Fit_GetMesgDef(FIT_MESG_NUM_RECORD);
+      |                                                      ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:45:55: error: request for member 'num' in 'mesgDef->FIT_MESG_DEF::fields[i]', which is of non-class type 'const FIT_UINT8' {aka 'const unsigned char'}
+   45 |                 buffer[length++] = mesgDef->fields[i].num;
+      |                                                       ^~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:46:55: error: request for member 'size' in 'mesgDef->FIT_MESG_DEF::fields[i]', which is of non-class type 'const FIT_UINT8' {aka 'const unsigned char'}
+   46 |                 buffer[length++] = mesgDef->fields[i].size;
+      |                                                       ^~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:47:55: error: request for member 'type' in 'mesgDef->FIT_MESG_DEF::fields[i]', which is of non-class type 'const FIT_UINT8' {aka 'const unsigned char'}
+   47 |                 buffer[length++] = mesgDef->fields[i].type;
+      |                                                       ^~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:59:5: error: 'FIT_RECORD_MESG' was not declared in this scope
+   59 |     FIT_RECORD_MESG record;
+      |     ^~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/./fit_profile.h:14:36: error: 'FIT_MESG_NUM' was not declared in this scope; did you mean 'FIT_MESG_DEF'?
+   14 | #define FIT_MESG_NUM_RECORD      ((FIT_MESG_NUM)20)
+      |                                    ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:60:33: note: in expansion of macro 'FIT_MESG_NUM_RECORD'
+   60 |     Fit_InitMesg(Fit_GetMesgDef(FIT_MESG_NUM_RECORD), &record);
+      |                                 ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/garmin_fit/fit_profile/./fit_profile.h:14:49: error: expected ')' before numeric constant
+   14 | #define FIT_MESG_NUM_RECORD      ((FIT_MESG_NUM)20)
+      |                                  ~              ^~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:60:33: note: in expansion of macro 'FIT_MESG_NUM_RECORD'
+   60 |     Fit_InitMesg(Fit_GetMesgDef(FIT_MESG_NUM_RECORD), &record);
+      |                                 ^~~~~~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:63:5: error: 'record' was not declared in this scope
+   63 |     record.timestamp = getFitTimestamp(data.totalTime);
+      |     ^~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:63:24: error: 'getFitTimestamp' was not declared in this scope
+   63 |     record.timestamp = getFitTimestamp(data.totalTime);
+      |                        ^~~~~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp: In member function 'void FitRecorder::writeToStorage(const void*, size_t)':
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:93:26: error: no matching function for call to 'StorageManager::appendRecord(std::string&)'
+   93 |     storage->appendRecord(binData);
+      |     ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+In file included from /workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.h:6:
+/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/./StorageManager.h:12:14: note: candidate: 'bool StorageManager::appendRecord(const std::string&, const std::string&)'
+   12 |         bool appendRecord(const std::string& data, const std::string& filename);
+      |              ^~~~~~~~~~~~
+/workspace/open_rowing_monitor_esp32/modules/hardware_driver/StorageManager/./StorageManager.h:12:14: note:   candidate expects 2 arguments, 1 provided
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp: At global scope:
+/workspace/open_rowing_monitor_esp32/modules/physics_engine/FITRecorder/FITRecorder.cpp:96:1: error: 'FIT_DATE_TIME' does not name a type
+   96 | FIT_DATE_TIME FitRecorder::getFitTimestamp(double sessionTimeS) {
+      | ^~~~~~~~~~~~~
+ninja: build stopped: subcommand failed.
+FATAL ERROR: command exited with status 1: /usr/bin/cmake --build /workspace/open_rowing_monitor_esp32/build

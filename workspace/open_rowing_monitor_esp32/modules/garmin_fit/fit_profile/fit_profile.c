@@ -1,61 +1,58 @@
 #include "fit_profile.h"
+#include "fit_crc.h"
 
-// --- FILE ID FIELDS ---
-static const FIT_FIELD_DEF file_id_fields[] = {
-   {  3, 4 }, // serial_number
-   {  4, 4 }, // time_created
-   {  1, 2 }, // manufacturer
-   {  2, 2 }, // product
-   {  5, 2 }, // number
-   {  0, 1 }  // type
+typedef FIT_UINT32 FIT_DATE_TIME;
+
+// The SDK expects this structure for file message definitions
+typedef struct
+{
+   FIT_UINT16 num;
+   FIT_UINT32 data_file_offset;
+} FIT_FILE_MESG;
+
+// Custom structs to handle the inline field definitions required by the SDK
+typedef struct {
+   FIT_UINT8 reserved_1;
+   FIT_UINT8 arch;
+   FIT_UINT16 global_mesg_num;
+   FIT_UINT8 num_fields;
+   FIT_FIELD_DEF fields[FIT_FILE_ID_MESG_DEF_SIZE];
+} FIT_FILE_ID_MESG_DEF_STRUCT;
+
+typedef struct {
+   FIT_UINT8 reserved_1;
+   FIT_UINT8 arch;
+   FIT_UINT16 global_mesg_num;
+   FIT_UINT8 num_fields;
+   FIT_FIELD_DEF fields[FIT_RECORD_MESG_DEF_SIZE];
+} FIT_RECORD_MESG_DEF_STRUCT;
+
+static const FIT_FILE_ID_MESG_DEF_STRUCT file_id_mesg_def = {
+   0, FIT_ARCH_ENDIAN, FIT_MESG_NUM_FILE_ID, FIT_FILE_ID_MESG_DEF_SIZE,
+   {
+      { FIT_FILE_ID_FIELD_NUM_TYPE, 1, FIT_BASE_TYPE_ENUM },
+      { FIT_FILE_ID_FIELD_NUM_MANUFACTURER, 2, FIT_BASE_TYPE_UINT16 },
+      { FIT_FILE_ID_FIELD_NUM_PRODUCT, 2, FIT_BASE_TYPE_UINT16 },
+      { FIT_FILE_ID_FIELD_NUM_SERIAL_NUMBER, 4, FIT_BASE_TYPE_UINT32Z },
+      { FIT_FILE_ID_FIELD_NUM_TIME_CREATED, 4, FIT_BASE_TYPE_UINT32 },
+      { FIT_FILE_ID_FIELD_NUM_NUMBER, 2, FIT_BASE_TYPE_UINT16 }
+   }
 };
 
-// --- SESSION FIELDS ---
-static const FIT_FIELD_DEF session_fields[] = {
-   { 253, 4 }, // timestamp
-   {   2, 4 }, // start_time
-   {   7, 4 }, // total_elapsed_time
-   {   8, 4 }, // total_timer_time
-   {   9, 4 }, // total_distance
-   {  16, 4 }, // total_cycles (mapped to total_strokes)
-   {  11, 2 }, // total_calories
-   {  14, 2 }, // avg_speed
-   {  15, 2 }, // max_speed
-   {  20, 2 }, // avg_power
-   {  21, 2 }, // max_power
-   {  18, 1 }, // avg_cadence
-   {  19, 1 }, // max_cadence
-   {   5, 1 }, // sport
-   {   6, 1 }  // sub_sport
+static const FIT_RECORD_MESG_DEF_STRUCT record_mesg_def = {
+   0, FIT_ARCH_ENDIAN, FIT_MESG_NUM_RECORD, FIT_RECORD_MESG_DEF_SIZE,
+   {
+      { FIT_RECORD_FIELD_NUM_TIMESTAMP, 4, FIT_BASE_TYPE_UINT32 },
+      { FIT_RECORD_FIELD_NUM_DISTANCE, 4, FIT_BASE_TYPE_UINT32 },
+      { FIT_RECORD_FIELD_NUM_CADENCE, 1, FIT_BASE_TYPE_UINT8 },
+      { FIT_RECORD_FIELD_NUM_POWER, 2, FIT_BASE_TYPE_UINT16 },
+      { FIT_RECORD_FIELD_NUM_HEART_RATE, 1, FIT_BASE_TYPE_UINT8 },
+      { FIT_RECORD_FIELD_NUM_STROKE_COUNT, 2, FIT_BASE_TYPE_UINT16 }
+   }
 };
 
-// --- RECORD FIELDS ---
-static const FIT_FIELD_DEF record_fields[] = {
-   { 253, 4 }, // timestamp
-   {   5, 4 }, // distance
-   {   7, 2 }, // power
-   {   6, 2 }, // speed
-   {   4, 1 }, // cadence (mapped to SPM)
-   {   3, 1 }  // heart_rate
-};
-
-// --- ACTIVITY FIELDS ---
-static const FIT_FIELD_DEF activity_fields[] = {
-   { 253, 4 }, // timestamp
-   {   0, 4 }, // total_timer_time
-   {   5, 4 }, // local_timestamp
-   { 254, 4 }, // timezone_offset
-   {   3, 1 }, // type
-   {   1, 1 }, // event
-   {   2, 1 }  // event_type
-};
-
-// --- MASTER LOOKUP TABLE ---
-// This connects the IDs to the definitions
-const FIT_CONST_MESG_DEF fit_mesg_defs[] = {
-   { 0, FIT_MESG_NUM_FILE_ID,  FIT_FILE_ID_MESG_DEF_SIZE,  file_id_fields,  0 },
-   { 0, FIT_MESG_NUM_SESSION,  FIT_SESSION_MESG_DEF_SIZE,  session_fields,  0 },
-   { 0, FIT_MESG_NUM_RECORD,   FIT_RECORD_MESG_DEF_SIZE,   record_fields,   0 },
-   { 0, FIT_MESG_NUM_ACTIVITY, FIT_ACTIVITY_MESG_DEF_SIZE, activity_fields, 0 },
-   { 0, FIT_MESG_NUM_INVALID,  0,                          FIT_NULL,        0 }
+const FIT_MESG_DEF * const fit_mesg_defs[] = {
+   (const FIT_MESG_DEF*)&file_id_mesg_def,
+   (const FIT_MESG_DEF*)&record_mesg_def,
+   FIT_NULL
 };
