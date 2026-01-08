@@ -39,6 +39,8 @@
         /* You can make this larger if your code grows */
         slot0_partition: partition@10000 {
             label = "image-0";
+            reg = <0x00010000 0x00200000>;
+        };
 
         /* 0x210000 - End: Storage (~13.8MB) */
         /* This is where LittleFS will live */
@@ -50,5 +52,5 @@
 };
 
 &esp32_bt_hci {
-	status = "okay"
-}
+    status = "okay";
+};

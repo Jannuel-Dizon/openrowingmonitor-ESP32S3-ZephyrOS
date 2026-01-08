@@ -19,6 +19,7 @@ struct RowingData {
     // Physics
     double distance = 0.0;           // Total Meters
     double speed = 0.0;              // m/s (Average for the stroke)
+    // Add instntaneousPace and averagePace then remove speed (Pace is seconds per 500m) 1/(speed*500)
     double power = 0.0;              // Watts (Average for the stroke)
     double dragFactor = 0.0;         // Drag Coefficient
 

@@ -74,7 +74,6 @@ int main(void) {
     // LOG_INF("System Ready! Press the button (GPIO 17) to simulate strokes.");
     storage.dumpFile("test.csv");
     for (int i = 0; i < 50; i++) {
-    	/*
      	// Fetch data safely using the Mutex-protected getter
         RowingData liveData = engine.getData();
 
@@ -95,11 +94,7 @@ int main(void) {
              sprintf(buffer, "%.2f, %.1f, %.1f", liveData.totalTime, liveData.power, liveData.distance);
              storage.appendRecord(std::string(buffer));
         }
-        */
-        char buffer[64];
-        sprintf(buffer, "%d, %d, %d, ", i, i+1, i+2);
-        storage.appendRecord(std::string(buffer), "test.csv");
-        k_msleep(10);
+        k_msleep(1000);
     }
     storage.dumpFile("test.csv");
     return 0;
