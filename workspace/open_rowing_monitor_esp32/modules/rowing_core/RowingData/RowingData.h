@@ -27,4 +27,17 @@ struct RowingData {
     double instantaneousTorque = 0.0;// For Force Curve
     double spm = 0.0;                // Strokes Per Minute
     int strokeCount = 0;
+
+    // Training Session State
+    bool sessionActive = false;
+    double sessionStartTime = 0.0;
+    // Cumulative Data for Averages
+    double totalSpmSum = 0.0;
+    double totalSpeedSum = 0.0;
+    double totalPowerSum = 0.0;
+    uint32_t strokeSampleCount = 0; // Number of strokes recorded in session
+    // Calculated Averages for BLE
+    double avgSpm = 0.0;
+    double avgSpeed = 0.0;
+    double avgPower = 0.0;
 };

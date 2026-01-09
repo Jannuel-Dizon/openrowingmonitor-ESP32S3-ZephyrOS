@@ -1,5 +1,5 @@
-#ifndef FTMS_SERVICE_H
-#define FTMS_SERVICE_H
+#ifndef FTMS_H
+#define FTMS_H
 
 #include <zephyr/types.h>
 #include <stddef.h>
@@ -23,7 +23,7 @@
 #define BT_UUID_FITNESS_MACHINE_FEATURE_VAL 0x2ACC
 #define BT_UUID_FITNESS_MACHINE_FEATURE     BT_UUID_DECLARE_16(BT_UUID_FITNESS_MACHINE_FEATURE_VAL)
 
-class FTMSService {
+class FTMS {
 public:
     /**
      * @brief Initialize the FTMS Service (Advertises capabilities)
@@ -42,4 +42,4 @@ private:
     bool isNotifyEnabled();
 };
 
-#endif // FTMS_SERVICE_H
+#endif // FTMS_H
