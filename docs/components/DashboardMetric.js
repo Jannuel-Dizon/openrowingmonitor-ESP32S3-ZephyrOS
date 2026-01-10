@@ -6,7 +6,7 @@
 */
 
 import { AppElement, html, css } from "./AppElement.js";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property } from "lit";
 
 export class DashboardMetric extends AppElement {
   static styles = css`

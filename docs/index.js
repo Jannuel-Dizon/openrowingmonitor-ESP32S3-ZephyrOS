@@ -5,9 +5,7 @@
   Main Initialization Component of the Web Component App
 */
 
-// import { LitElement, html } from "lit";
-import { LitElement, html } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { LitElement, html, customElement, state } from "lit";
 import { APP_STATE } from "./store/appState.js";
 import { createApp } from "./lib/app.js";
 import "./components/PerformanceDashboard.js";

@@ -6,7 +6,7 @@
 */
 
 import { AppElement, html, css } from "./AppElement.js";
-import { customElement, state } from "lit/decorators.js";
+import { customElement, state } from "lit";
 import {
   icon_undo,
   icon_expand,

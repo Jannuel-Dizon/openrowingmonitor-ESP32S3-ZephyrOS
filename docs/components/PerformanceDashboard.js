@@ -7,7 +7,7 @@
 
 import { AppElement, html, css } from "./AppElement.js";
 import { APP_STATE } from "../store/appState.js";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property } from "lit";
 import "./DashboardMetric.js";
 import "./DashboardActions.js";
 import "./BatteryIcon.js";

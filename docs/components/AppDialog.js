@@ -6,8 +6,7 @@
 */
 
 import { AppElement, html, css } from "./AppElement.js";
-import { customElement, property } from "lit/decorators.js";
-import { ref, createRef } from "lit/directives/ref.js";
+import { customElement, property, ref, createRef } from "lit";
 
 export class AppDialog extends AppElement {
   constructor() {
