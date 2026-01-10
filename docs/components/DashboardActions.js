@@ -17,7 +17,6 @@ import {
 } from "../lib/icons.js";
 import "./AppDialog.js";
 
-@customElement("dashboard-actions")
 export class DashboardActions extends AppElement {
   static styles = css`
     button {
@@ -65,8 +64,11 @@ export class DashboardActions extends AppElement {
     }
   `;
 
-  @state({ type: Object })
-  dialog;
+  static get properties() {
+    return {
+      dialog: { type: Object, state: true },
+    };
+  }
 
   render() {
     return html`

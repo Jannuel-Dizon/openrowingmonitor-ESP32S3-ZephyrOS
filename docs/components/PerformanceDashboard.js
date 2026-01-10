@@ -21,7 +21,6 @@ import {
   icon_clock,
 } from "../lib/icons.js";
 
-@customElement("performance-dashboard")
 export class PerformanceDashboard extends AppElement {
   static styles = css`
     :host {
@@ -54,11 +53,17 @@ export class PerformanceDashboard extends AppElement {
     }
   `;
 
-  @property({ type: Object })
-  metrics;
+  static get properties() {
+    return {
+      metrics: { type: Object },
+    };
+  }
 
-  @property({ type: Object })
-  appState = APP_STATE;
+  static get properties() {
+    return {
+      appState: { type: Object },
+    };
+  }
 
   render() {
     const metrics = this.calculateFormattedMetrics(this.appState.metrics);

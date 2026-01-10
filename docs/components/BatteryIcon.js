@@ -8,7 +8,6 @@
 import { AppElement, svg, css } from "./AppElement.js";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("battery-icon")
 export class DashboardMetric extends AppElement {
   static styles = css`
     .icon {
@@ -20,8 +19,11 @@ export class DashboardMetric extends AppElement {
     }
   `;
 
-  @property({ type: String })
-  batteryLevel = "";
+  static get properties() {
+    return {
+      batteryLevel: { type: String },
+    };
+  }
 
   render() {
     // 416 is the max width value of the battery bar in the SVG graphic

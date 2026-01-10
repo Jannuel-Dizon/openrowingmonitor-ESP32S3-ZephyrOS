@@ -8,7 +8,6 @@
 import { AppElement, html, css } from "./AppElement.js";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("dashboard-metric")
 export class DashboardMetric extends AppElement {
   static styles = css`
     .label,
@@ -35,14 +34,23 @@ export class DashboardMetric extends AppElement {
     }
   `;
 
-  @property({ type: Object })
-  icon;
+  static get properties() {
+    return {
+      icon: { type: Object },
+    };
+  }
 
-  @property({ type: String })
-  unit = "";
+  static get properties() {
+    return {
+      unit: { type: String },
+    };
+  }
 
-  @property({ type: String })
-  value = "";
+  static get properties() {
+    return {
+      value: { type: String },
+    };
+  }
 
   render() {
     return html`

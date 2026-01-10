@@ -6,18 +6,18 @@
 */
 
 import { LitElement, html } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { LitElement, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 import { APP_STATE } from "./store/appState.js";
 import { createApp } from "./lib/app.js";
 import "./components/PerformanceDashboard.js";
 
-@customElement("web-app")
 export class App extends LitElement {
-  @state()
-  appState = APP_STATE;
-
-  @state()
-  metrics;
+  static get properties() {
+    return {
+      appStat: { state: true },
+      metrics: (state: true)
+    };
+  }
 
   constructor() {
     super();

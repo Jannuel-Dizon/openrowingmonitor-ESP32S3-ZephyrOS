@@ -9,7 +9,6 @@ import { AppElement, html, css } from "./AppElement.js";
 import { customElement, property } from "lit/decorators.js";
 import { ref, createRef } from "lit/directives/ref.js";
 
-@customElement("app-dialog")
 export class AppDialog extends AppElement {
   constructor() {
     super();
@@ -74,8 +73,11 @@ export class AppDialog extends AppElement {
     }
   `;
 
-  @property({ type: Boolean, reflect: true })
-  dialogOpen;
+  static get properties() {
+    return {
+      dialogOpen: { type: Boolean, reflect: true },
+    };
+  }
 
   render() {
     return html`
