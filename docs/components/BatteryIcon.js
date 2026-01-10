@@ -38,3 +38,4 @@ export class DashboardMetric extends AppElement {
     `;
   }
 }
+customElements.define("battery-icon", DashboardMetric);

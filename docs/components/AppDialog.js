@@ -115,3 +115,4 @@ export class AppDialog extends AppElement {
     }
   }
 }
+customElements.define("app-dialog", AppDialog);

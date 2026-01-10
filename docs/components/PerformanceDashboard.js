@@ -150,3 +150,4 @@ export class PerformanceDashboard extends AppElement {
     return formattedMetrics;
   }
 }
+customElements.define("performance-dashboard", PerformanceDashboard);

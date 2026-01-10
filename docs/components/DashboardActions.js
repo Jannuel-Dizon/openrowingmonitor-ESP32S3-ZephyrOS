@@ -189,3 +189,4 @@ export class DashboardActions extends AppElement {
     this.sendEvent("triggerAction", { command: "connect" });
   }
 }
+customElements.define("dashboard-actions", DashboardActions);

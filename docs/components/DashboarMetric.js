@@ -57,3 +57,4 @@ export class DashboardMetric extends AppElement {
     `;
   }
 }
+customElements.define("dashboard-metric", DashboardMetric);

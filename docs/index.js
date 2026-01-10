@@ -71,4 +71,4 @@ export class App extends LitElement {
     return this;
   }
 }
-customElements.define("web-app", WebApp);
+customElements.define("web-app", App);
