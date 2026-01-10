@@ -5,11 +5,8 @@
   Base Component for all other App Components
 */
 
-import {
-  LitElement,
-  html,
-  css,
-} from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import { LitElement } from "lit";
+import { property } from "lit/decorators.js";
 import { APP_STATE } from "../store/appState.js";
 
 export { html, css }; // Manually export what your other files need

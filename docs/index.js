@@ -6,10 +6,8 @@
 */
 
 // import { LitElement, html } from "lit";
-import {
-  LitElement,
-  html,
-} from "https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js";
+import { LitElement, html } from "lit";
+import { customElement, state } from "lit/decorators.js";
 import { APP_STATE } from "./store/appState.js";
 import { createApp } from "./lib/app.js";
 import "./components/PerformanceDashboard.js";

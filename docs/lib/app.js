@@ -1,6 +1,6 @@
 /* client/lib/app.js */
 "use strict";
-import NoSleep from "https://cdn.jsdelivr.net/npm/nosleep.js@0.12.0/dist/NoSleep.min.js";
+import NoSleep from "nosleep.js";
 import { BleClient } from "./BleClient.js";
 import { filterObjectByKeys } from "./helper.js";
 

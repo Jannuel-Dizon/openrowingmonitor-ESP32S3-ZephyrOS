@@ -60,6 +60,16 @@
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <web-app></web-app>
+        <script type="importmap">
+            {
+                "imports": {
+                    "lit": "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js",
+                    "lit/decorators.js": "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js",
+                    "lit/directives/ref.js": "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js",
+                    "nosleep.js": "https://cdn.jsdelivr.net/npm/nosleep.js@0.12.0/dist/NoSleep.min.js"
+                }
+            }
+        </script>
         <script type="module" src="./index.js"></script>
     </body>
 </html>
