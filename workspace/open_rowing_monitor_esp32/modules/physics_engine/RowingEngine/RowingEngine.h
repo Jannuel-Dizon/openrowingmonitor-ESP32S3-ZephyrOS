@@ -24,10 +24,14 @@ private:
     double recoveryPhaseStartAngularDisplacement = 0;
     double previousAngularVelocity = 0;
 
+    // Automatic dragfactor
+    double recoveryDragAccumulator = 0.0;
+    int recoveryDragSampleCount = 0;
+
     // Helpers
     double calculateLinearVelocity(double driveAngle, double recoveryAngle, double cycleTime);
     double calculateCyclePower(double driveAngle, double recoveryAngle, double cycleTime);
-    double calculateTorque(double dt, double currentVel);
+    double calculateTorque(double dt, double currentVel, double alpha);
 
     void startDrivePhase(double dt);
     void updateDrivePhase(double dt);
@@ -44,4 +48,5 @@ public:
 
     // Thread-Safe Accessor
     RowingData getData();
+    void printData();
 };

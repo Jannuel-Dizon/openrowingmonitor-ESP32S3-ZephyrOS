@@ -43,10 +43,8 @@ int main(void)
 
     // 6. Main Loop (Application Thread)
     bool wasConnected = false;
-
     while (1) {
         bool isConnected = bleManager.isConnected();
-
         // Handle State Transitions for Physics Engine
         if (isConnected && !wasConnected) {
             gpioService.resume();
@@ -64,6 +62,7 @@ int main(void)
         }
 
         k_msleep(500); // Poll at 2Hz
+        // k_sleep(K_USEC(12500));
     }
     return 0;
 };

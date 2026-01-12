@@ -38,6 +38,9 @@ void RowingEngine::reset() {
 }
 
 void RowingEngine::handleRotationImpulse(double dt) {
+    if (dt < settings.minimumTimeBetweenImpulses) {
+        return;
+    }
     if (dt > settings.maximumImpulseTimeBeforePause) {
         return;
     }
@@ -79,7 +82,23 @@ void RowingEngine::startDrivePhase(double dt) {
     double recoveryLen = endTime - recoveryPhaseStartTime;
     double driveLen = currentData.driveDuration;
 
+    if (settings.autoAdjustDragFactor && recoveryDragSampleCount > 0) {
+        // 1. Average the samples collected during the last recovery
+        double avgDragForLastRecovery = recoveryDragAccumulator / recoveryDragSampleCount;
+
+        // 2. Smooth it using the MovingAverager (prevents jitter)
+        dragFactorAverager.pushValue(avgDragForLastRecovery);
+
+        // 3. Update the Settings so the power calc uses the new value
+        double smoothedDrag = dragFactorAverager.getAverage();
+        settings.dragFactor = smoothedDrag;
+
+        // 4. Update the Data struct so the UI sees the new value
+        // (We do this inside the lock below)
+    }
+
     k_mutex_lock(&dataLock, K_FOREVER);
+    currentData.dragFactor = settings.dragFactor;
     if (recoveryLen >= settings.minimumRecoveryTime && driveLen >= settings.minimumDriveTime) {
         double cycleTime = driveLen + recoveryLen;
         currentData.lastStrokeTime = cycleTime;
@@ -95,10 +114,12 @@ void RowingEngine::startDrivePhase(double dt) {
 
 void RowingEngine::updateDrivePhase(double dt) {
     double currentVel = angularDisplacementPerImpulse / dt;
-    double torque = calculateTorque(dt, currentVel);
+    double alpha = (currentVel - previousAngularVelocity) / dt;
+    double torque = calculateTorque(dt, currentVel, alpha);
 
     k_mutex_lock(&dataLock, K_FOREVER);
     currentData.instTorque = torque;
+    currentData.angularAcceleration = alpha;
     RowingData snapshot = currentData;
     k_mutex_unlock(&dataLock);
 }
@@ -107,6 +128,8 @@ void RowingEngine::startRecoveryPhase(double dt) {
     double endTime = currentData.totalTime - flankDetector.timeToBeginOfFlank();
 
     k_mutex_lock(&dataLock, K_FOREVER);
+    recoveryDragAccumulator = 0.0;
+    recoveryDragSampleCount = 0;
 
     currentData.driveDuration = endTime - drivePhaseStartTime;
     currentData.state = RowingState::RECOVERY;
@@ -158,16 +181,36 @@ void RowingEngine::startRecoveryPhase(double dt) {
 
 void RowingEngine::updateRecoveryPhase(double dt) {
     double currentVel = angularDisplacementPerImpulse / dt;
-    double torque = calculateTorque(dt, currentVel);
+    double alpha = (currentVel - previousAngularVelocity) / dt;
+
+    // [NEW] Dynamic Drag Factor Logic
+    if (settings.autoAdjustDragFactor) {
+        // Only calculate if flywheel is actually slowing down (alpha < 0)
+        // and moving fast enough to avoid low-speed noise (e.g., > 10 rad/s)
+        if (alpha < 0 && currentVel > 10.0) {
+
+            // Physics Formula: k = (I * -alpha) / w^2
+            double rawDrag = (settings.flywheelInertia * -alpha) / (currentVel * currentVel);
+
+            // Sanity Check: Ignore wild outliers (e.g. sensor noise causing massive spikes)
+            // A drag factor > 0.1 is physically impossible for a rower (usually 0.0001 - 0.005)
+            if (rawDrag > 0.0 && rawDrag < 0.1) {
+                recoveryDragAccumulator += rawDrag;
+                recoveryDragSampleCount++;
+            }
+        }
+    }
+    double torque = calculateTorque(dt, currentVel, alpha);
+
 
     k_mutex_lock(&dataLock, K_FOREVER);
+    currentData.angularAcceleration = alpha;
     currentData.instTorque = torque;
     RowingData snapshot = currentData;
     k_mutex_unlock(&dataLock);
 }
 
-double RowingEngine::calculateTorque(double dt, double currentVel) {
-    double alpha = (currentVel - previousAngularVelocity) / dt;
+double RowingEngine::calculateTorque(double dt, double currentVel, double alpha) {
     double torque = settings.flywheelInertia * alpha + settings.dragFactor * std::pow(currentVel, 2);
     previousAngularVelocity = currentVel;
     return torque;
@@ -188,7 +231,6 @@ double RowingEngine::calculateCyclePower(double driveAngle, double recoveryAngle
 }
 
 void RowingEngine::resetSessionInternal() {
-    // No k_mutex_lock here!
     currentData.sessionActive = true;
     currentData.sessionStartTime = currentData.totalTime;
     currentData.totalSpmSum = 0;
@@ -210,6 +252,18 @@ void RowingEngine::startSession() {
 void RowingEngine::endSession() {
     k_mutex_lock(&dataLock, K_FOREVER);
     currentData.sessionActive = false;
+    resetSessionInternal();
     LOG_INF("Session ended.");
+    k_mutex_unlock(&dataLock);
+}
+
+void RowingEngine::printData() {
+    k_mutex_lock(&dataLock, K_FOREVER);
+    printk("Power: %f\n", currentData.instPower);
+    printk("Torque: %f\n", currentData.instTorque);
+    printk("Stroke Rate: %f\n", currentData.spm);
+    printk("Pace: %f\n", currentData.instSpeed);
+    printk("Distance: %f\n", currentData.distance);
+    printk("Total Strokes: %d\n", currentData.strokeSampleCount);
     k_mutex_unlock(&dataLock);
 }

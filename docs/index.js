@@ -1,3 +1,6 @@
+// const { act } = require("react");
+import { act } from "https://esm.sh/react@18";
+
 const FTMS_SERVICE_UUID = 0x1826;
 const ROWER_DATA_CHAR_UUID = 0x2ad1;
 
@@ -47,10 +50,37 @@ connectBtn.addEventListener("click", async () => {
   }
 });
 
+/*
+let isRecording = false;
+let recordingStartTime = 0;
+let csvData = "Time_sec,Angular_Accel_RadS/2\n";
+
+const recordBtn = document.getElementById("recordBtn");
+const csvOutput = document.getElementById("csvOutput");
+const copyBtn = document.getElementById("copyBtn");
+
+recordBtn.addEventListener("click", () => {
+  isRecording = !isRecording;
+  if (isRecording) {
+    recordBtn.innerText = "STOP RECORDING";
+    recordBtn.style.backgroundColor = "#f44336";
+    csvData = "Time_Sec,Angular_Accel_RadS2\n"; // Reset header
+    recordingStartTime = Date.now();
+  } else {
+    recordBtn.innerText = "START RECORDING";
+    recordBtn.style.backgroundColor = "#ff9800";
+  }
+});
+copyBtn.addEventListener("click", () => {
+  csvOutput.select();
+  document.execCommand("copy");
+  alert("Copied to clipboard!");
+});
+*/
+
 function handleData(event) {
   const data = event.target.value; // DataView
   let cursor = 0;
-
   // 1. Flags (UINT16)
   const flags = data.getUint16(cursor, true);
   cursor += 2;
@@ -101,6 +131,14 @@ function handleData(event) {
   ui.strokeCount.innerText = strokeCount;
   ui.time.innerText = formatTime(elapsedTime);
   ui.pace.innerText = formatTime(instPaceSecs);
+  /*
+  // Recording Logic
+  if (isRecording) {
+    const timeOffset = ((Date.now() - recordingStartTime) / 1000).toFixed(3);
+    csvData += `${timeOffset},${actualAccel.toFixed(3)}\n`;
+    csvOutput.value = csvData; // Real-time update
+  }
+  */
 }
 
 function formatTime(seconds) {

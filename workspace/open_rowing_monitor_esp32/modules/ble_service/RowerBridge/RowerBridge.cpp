@@ -24,6 +24,7 @@ void RowerBridge::update() {
 
     // 2. Get Fresh Data from Physics Engine
     RowingData data = m_engine.getData();
+    // m_engine.printData();
     Context ctx = {&m_service, &data};
     // 3. Send data to all clients
     m_blemanager.forEachConnection([](struct bt_conn *conn, void *ptr) {

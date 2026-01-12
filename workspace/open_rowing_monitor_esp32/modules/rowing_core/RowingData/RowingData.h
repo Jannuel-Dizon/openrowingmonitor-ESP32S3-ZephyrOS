@@ -37,6 +37,7 @@ struct RowingData {
 
     // Live Data (High Frequency)
     double instTorque = 0.0;// For Force Curve
+    double angularAcceleration = 0.0;
     double spm = 0.0;                // Strokes Per Minute
     int strokeCount = 0;
 
