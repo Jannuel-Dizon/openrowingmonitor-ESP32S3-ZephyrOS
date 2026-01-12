@@ -20,7 +20,8 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
     BT_DATA_BYTES(BT_DATA_UUID16_ALL,
-                  BT_UUID_16_ENCODE(BT_UUID_FTMS_VAL)) // 0x1826
+                  BT_UUID_16_ENCODE(BT_UUID_FTMS_VAL)), // 0x1826
+    BT_DATA_BYTES(BT_DATA_GAP_APPEARANCE, BT_UUID_16_ENCODE(CONFIG_BT_DEVICE_APPEARANCE))
 };
 
 // Scan Response: Show the Device Name
@@ -34,7 +35,7 @@ void BleManager::init() {
         LOG_ERR("Bluetooth init failed (err %d)\n", err);// change to LOG_ERR
         return;
     }
-    LOG_INF("Bluetooth initialized\n");
+    LOG_INF("Bluetooth Initialized");
     active_connections = 0;
     startAdvertising();
 }
@@ -43,7 +44,7 @@ void BleManager::startAdvertising() {
     // int err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
     int err = bt_le_adv_start(BT_LE_ADV_CONN, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
     if (err >= 0 || err == -120) {
-        LOG_INF("Advertising successfully started\n");
+        LOG_INF("Advertising successfully started");
         return;
     }
     LOG_ERR("Advertising failed to start (err %d)\n", err);
@@ -55,7 +56,7 @@ bool BleManager::isConnected() {
 
 void BleManager::onConnected(struct bt_conn *conn, uint8_t err) {
     if (err) {
-        LOG_ERR("Connection failed (err 0x%02x)\n", err);
+        LOG_ERR("Connection failed (err 0x%02x)", err);
     } else {
         LOG_INF("Connected");
         k_mutex_lock(&conn_mutex, K_FOREVER); // PROTECT THIS

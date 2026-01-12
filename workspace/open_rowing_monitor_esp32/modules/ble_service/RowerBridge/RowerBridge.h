@@ -8,7 +8,7 @@
 class RowerBridge {
 public:
     RowerBridge(RowingEngine& engine, FTMS& service, BleManager& blemanager);
-
+    void init();
     /**
      * @brief Call this in your main loop to handle data updates
      */

@@ -12,6 +12,7 @@ RowingEngine::RowingEngine(RowingSettings rs)
     k_mutex_init(&dataLock);
     angularDisplacementPerImpulse = (2.0 * 3.14159265359) / settings.numOfImpulsesPerRevolution;
     reset();
+    LOG_INF("RowingEngine Initialized");
 }
 
 RowingData RowingEngine::getData() {

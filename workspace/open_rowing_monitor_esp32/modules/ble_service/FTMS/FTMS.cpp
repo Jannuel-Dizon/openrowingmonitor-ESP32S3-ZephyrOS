@@ -21,7 +21,7 @@ static ssize_t read_feature(struct bt_conn *conn, const struct bt_gatt_attr *att
 static void rower_ccc_cfg_changed(const struct bt_gatt_attr *attr, uint16_t value)
 {
 	bool enabled = (value == BT_GATT_CCC_NOTIFY);
-    LOG_INF("A client changed FTMS Notifications to: %s\n", enabled ? "ENABLED" : "DISABLED");
+    LOG_INF("A client changed FTMS Notifications to: %s", enabled ? "ENABLED" : "DISABLED");
 }
 
 // Define the Service Layout
@@ -49,7 +49,7 @@ BT_GATT_SERVICE_DEFINE(ftms_svc,
 void FTMS::init() {
     // Zephyr handles GATT initialization automatically via the macro.
     // This function is here if you need to set initial values or debug logs.
-    LOG_INF("FTMS Service Initialized\n");
+    LOG_INF("FTMS Service Initialized");
 }
 
 void FTMS::notifyRowingData(struct bt_conn *conn, const RowingData& data) {

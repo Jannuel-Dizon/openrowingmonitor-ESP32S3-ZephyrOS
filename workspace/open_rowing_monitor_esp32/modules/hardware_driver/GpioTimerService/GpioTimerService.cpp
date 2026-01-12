@@ -57,6 +57,7 @@ void GpioTimerService::physicsThreadEntryPoint(void* p1, void* p2, void* p3) {
 
 void GpioTimerService::physicsLoop() {
     double dt;
+    LOG_INF("Physics loop thread started");
     while (true) {
         if (k_msgq_get(&impulseQueue, &dt, K_FOREVER) == 0) {
             engine.handleRotationImpulse(dt);
@@ -64,9 +65,7 @@ void GpioTimerService::physicsLoop() {
     }
 }
 
-// 2. FIXED ISR TRAMPOLINE (No more CONTAINER_OF)
 void GpioTimerService::interruptHandlerStatic(const struct device *dev, struct gpio_callback *cb, uint32_t pins) {
-    // Directly use the static instance pointer
     if (instance) {
         instance->handleInterrupt();
     }

@@ -30,7 +30,7 @@ public:
      * @brief Initialize the FTMS Service (Advertises capabilities)
      * call this once at startup
      */
-    void init();
+     void init();
 
     /**
      * @brief Sends a notification with the latest rowing data

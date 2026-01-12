@@ -37,6 +37,7 @@ int main(void)
     // 4. The Bridge
     // Connects the engine data to the BLE service
     RowerBridge bridge(engine, ftmsService, bleManager);
+    bridge.init();
 
     LOG_INF("All systems go. Ready to row.");
 

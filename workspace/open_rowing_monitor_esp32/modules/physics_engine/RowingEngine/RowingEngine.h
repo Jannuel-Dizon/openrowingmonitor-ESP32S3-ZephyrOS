@@ -6,14 +6,6 @@
 #include "RowingData.h"
 #include "MovingAverager.h"
 
-// Interface for Observer
-class RowingEngineObserver {
-public:
-    virtual void onStrokeStart(const RowingData& data) {}
-    virtual void onStrokeEnd(const RowingData& data) {}
-    virtual void onMetricsUpdate(const RowingData& data) {}
-};
-
 class RowingEngine {
 private:
     RowingSettings settings;
