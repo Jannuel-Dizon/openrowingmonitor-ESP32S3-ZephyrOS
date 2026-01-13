@@ -12,6 +12,7 @@ RowingEngine::RowingEngine(RowingSettings rs)
     k_mutex_init(&dataLock);
     angularDisplacementPerImpulse = (2.0 * 3.14159265359) / settings.numOfImpulsesPerRevolution;
     reset();
+    printSettings();
     LOG_INF("RowingEngine Initialized");
 }
 
@@ -267,3 +268,15 @@ void RowingEngine::printData() {
     printk("Total Strokes: %d\n", currentData.strokeSampleCount);
     k_mutex_unlock(&dataLock);
 }
+
+void RowingEngine::logDragFactor() {
+    k_mutex_lock(&dataLock, K_FOREVER);
+    LOG_INF("Drag factor: %f", currentData.dragFactor);
+    k_mutex_unlock(&dataLock);
+}
+
+void RowingEngine::printSettings() {
+    LOG_INF("Fly wheel inertia: %f", settings.flywheelInertia);
+    LOG_INF("Magic constant: %f", settings.magicConstant);
+    LOG_INF("Drag factor: %f", settings.dragFactor);
+};

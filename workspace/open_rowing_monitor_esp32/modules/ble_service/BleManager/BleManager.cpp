@@ -93,11 +93,22 @@ void BleManager::onDisconnected(struct bt_conn *conn, uint8_t reason) {
 }
 
 void BleManager::forEachConnection(void (*func)(struct bt_conn *conn, void *ptr), void *user_data) {
+    struct bt_conn *safe_conns[CONFIG_BT_MAX_CONN];
+    int count = 0;
+
+    // Prevents lock out because of the MUTEX
     k_mutex_lock(&conn_mutex, K_FOREVER);
     for (int i = 0; i < CONFIG_BT_MAX_CONN; i++) {
         if (current_conns[i]) {
-            func(current_conns[i], user_data);
+            safe_conns[count++] = bt_conn_ref(current_conns[i]);
         }
     }
-    k_mutex_unlock(&conn_mutex);
+    k_mutex_lock(&conn_mutex, K_FOREVER);
+
+    for (int i = 0; i < CONFIG_BT_MAX_CONN; i++) {
+        if (current_conns[i]) {
+            func(safe_conns[i], user_data);
+            bt_conn_unref(safe_conns[i]);
+        }
+    }
 }

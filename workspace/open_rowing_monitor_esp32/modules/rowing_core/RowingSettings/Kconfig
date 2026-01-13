@@ -130,7 +130,7 @@ config ORM_DAMPING_CONSTANT_MAX_CHANGE_X10000
 endif # ORM_AUTO_ADJUST_DRAG_FACTOR
 
 config ORM_DRAG_FACTOR
-    int "Initial/Static Drag Factor "
+    int "Initial/Static Drag Factor"
     default 1500
     help
         The Drag Coefficient (scaled x10000).

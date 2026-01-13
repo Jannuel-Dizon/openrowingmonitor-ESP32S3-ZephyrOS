@@ -49,4 +49,6 @@ public:
     // Thread-Safe Accessor
     RowingData getData();
     void printData();
+    void logDragFactor();
+    void printSettings();
 };
