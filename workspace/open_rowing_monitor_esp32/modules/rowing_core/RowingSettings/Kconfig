@@ -130,11 +130,18 @@ config ORM_DAMPING_CONSTANT_MAX_CHANGE_X10000
 endif # ORM_AUTO_ADJUST_DRAG_FACTOR
 
 config ORM_DRAG_FACTOR
-    int "Initial/Static Drag Factor (x10000)"
+    int "Initial/Static Drag Factor "
     default 1500
     help
         The Drag Coefficient (scaled x10000).
         If Auto Adjust is ON: This is the starting value before the first stroke.
         If Auto Adjust is OFF: This value is used constantly.
+
+config ORM_MAGIC_CONSTANT_X10000
+    int "Constant for computing distance (x10000)"
+    default 2800
+    help
+        Magic constant (x10000)
+        This is used to calculate the distnace based on power.
 
 endmenu

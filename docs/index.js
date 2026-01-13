@@ -10,8 +10,10 @@ const statusText = document.getElementById("status");
 // UI Elements
 const ui = {
   instPower: document.getElementById("instPower"),
+  avgPower: document.getElementById("avgPower"),
   spm: document.getElementById("spm"),
   pace: document.getElementById("pace"),
+  avgPace: document.getElementById("avgPace"),
   distance: document.getElementById("distance"),
   time: document.getElementById("time"),
   strokeCount: document.getElementById("strokeCount"),
@@ -126,11 +128,13 @@ function handleData(event) {
 
   // Update UI
   ui.instPower.innerText = instPower;
+  ui.avgPower.innerText = avgPower;
   ui.spm.innerText = instSpm.toFixed(1);
   ui.distance.innerText = distance;
   ui.strokeCount.innerText = strokeCount;
   ui.time.innerText = formatTime(elapsedTime);
   ui.pace.innerText = formatTime(instPaceSecs);
+  ui.avgPace.innerText = formatTime(avgPaceSecs);
   /*
   // Recording Logic
   if (isRecording) {
