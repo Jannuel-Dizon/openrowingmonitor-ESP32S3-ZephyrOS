@@ -10,6 +10,7 @@ set(ZEPHYR_EXTRA_MODULES
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/BleManager
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/FTMS
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/RowerBridge
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/utilities/SystemMonitor
 )
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
@@ -29,4 +30,5 @@ zephyr_include_directories(
     modules/ble_service/BleManager
     modules/ble_service/FTMS
     modules/ble_service/RowerBridge
+    modules/utilities/SystemMonitor
 )

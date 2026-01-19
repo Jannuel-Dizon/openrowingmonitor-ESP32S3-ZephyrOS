@@ -1,4 +1,4 @@
-name: GpioTimerService
+name: SystemMonitor
 build:
     cmake: .
     kconfig: Kconfig

@@ -13,6 +13,7 @@ public:
     void handleInterrupt();
     void pause();
     void resume();
+    struct k_thread* getPhysicsThread();
 
 private:
     RowingEngine& engine;
