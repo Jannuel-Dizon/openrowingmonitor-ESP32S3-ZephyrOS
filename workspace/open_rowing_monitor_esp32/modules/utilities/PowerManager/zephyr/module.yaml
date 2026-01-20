@@ -1,0 +1,4 @@
+name: PowerManager
+build:
+    cmake: .
+    kconfig: Kconfig
