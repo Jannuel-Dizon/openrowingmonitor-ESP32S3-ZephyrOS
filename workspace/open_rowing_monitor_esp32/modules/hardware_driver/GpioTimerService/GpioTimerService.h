@@ -4,7 +4,7 @@
 #include <zephyr/drivers/gpio.h>
 #include "RowingEngine.h"
 
-#define IMPULSE_QUEUE_SIZE 10
+#define IMPULSE_QUEUE_SIZE (CONFIG_GPIO_IMPULSE_QUEUE_SIZE * CONFIG_ORM_IMPULSES_PER_REV)
 
 class GpioTimerService {
 public:

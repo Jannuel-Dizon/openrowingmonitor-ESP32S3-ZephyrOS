@@ -8,7 +8,10 @@
 #include "BleManager.h"
 #include "FTMS.h"
 #include "RowerBridge.h"
+
+#ifdef CONFIG_SYSM_ENABLE_MONITORING
 #include "SystemMonitor.h"
+#endif // CONFIG_SYSM_ENABLE_MONITORING
 
 LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
@@ -38,13 +41,13 @@ int main(void)
     RowerBridge bridge(engine, ftmsService, bleManager);
     bridge.init();
 
+    #ifdef CONFIG_SYSM_ENABLE_MONITORING
     // 5. System Monitoring
-    /*
     SystemMonitor monitor;
     monitor.init();
     monitor.registerThread(k_current_get(), "main_thread");
     monitor.registerThread(gpioService.getPhysicsThread(), "physics_thread");
-    */
+    #endif // CONFIG_SYSM_ENABLE_MONITORING
 
     LOG_INF("All systems go. Ready to row.");
 
@@ -78,11 +81,12 @@ int main(void)
             bridge.update();
         }
 
+        #ifdef CONFIG_SYSM_ENABLE_MONITORING
         // ============================================================
         // System Monitoring (every 30 seconds)
         // ============================================================
-        // monitor.update(30000);
-        // bridge.update();
+        monitor.update(30000);
+        #endif // CONFIG_SYSM_ENABLE_MONITORING
 
         k_msleep(250);  // Main loop runs at 4Hz
     }

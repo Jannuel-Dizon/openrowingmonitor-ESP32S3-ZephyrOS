@@ -1,0 +1,12 @@
+menu "ORM System Monitor"
+
+config SYSM_ENABLE_MONITORING
+    bool "Enables system monitoring for debugging"
+    default n
+    help
+        Use this to see threads stack sizes and total use of heap to help adjust
+        CONFIG_MAIN_STACK_SIZE
+        CONFIG_GPIO_PHYSICS_THREAD_STACK_SIZE
+        CONFIG_HEAP_MEM_POOL_SIZE
+
+endmenu

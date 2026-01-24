@@ -1,6 +1,16 @@
 menu "GPIO Timer Service Configuration"
 
-config PHYSICS_THREAD_STACK_SIZE
+config GPIO_IMPULSE_QUEUE_SIZE
+    int "Size of Message Queue between ISR and Physics thread"
+    default 10
+    help
+        Size of the queue used by the ISR and the Physics thread.
+        This queue will already be scaled in compile time depending on how many magnets are installed,
+        as long as you updated CONFIG_ORM_IMPULSE_PER_REV.
+
+        Only increase if you run into issues where the queue size isnt enough.
+
+config GPIO_PHYSICS_THREAD_STACK_SIZE
     int "Physics Thread Stack Size (bytes)"
     default 4096
     range 2048 16384
@@ -17,7 +27,7 @@ config PHYSICS_THREAD_STACK_SIZE
         - 6144: Extra headroom for debugging/profiling
         - 8192: Maximum safety margin
 
-config ENABLE_PHYSICS_PROFILING
+config GPIO_ENABLE_PHYSICS_PROFILING
     bool "Enable Physics Thread Performance Profiling"
     default n
     help
