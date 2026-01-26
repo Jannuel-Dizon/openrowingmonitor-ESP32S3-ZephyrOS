@@ -11,7 +11,7 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
     .connected = BleManager::onConnected,
     .disconnected = BleManager::onDisconnected,
 };
-
+K_WORK_DELAYABLE_DEFINE(BleManager::adv_restart_work, BleManager::advRestartHandler);
 // -----------------------------------------------------------------------------
 // ADVERTISING DATA
 // -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ void BleManager::init() {
     }
     LOG_INF("Bluetooth Initialized");
     active_connections = 0;
-    startAdvertising();
+    k_work_schedule(&adv_restart_work, K_MSEC(100));
 }
 
 void BleManager::startAdvertising() {
@@ -75,7 +75,7 @@ void BleManager::onConnected(struct bt_conn *conn, uint8_t err) {
         }
         k_mutex_unlock(&conn_mutex);
         if (active_connections < CONFIG_BT_MAX_CONN) {
-            startAdvertising();
+            k_work_schedule(&adv_restart_work, K_MSEC(100));
         }
     }
 }
@@ -94,6 +94,20 @@ void BleManager::onDisconnected(struct bt_conn *conn, uint8_t reason) {
         }
     }
     k_mutex_unlock(&conn_mutex);
+    k_work_schedule(&adv_restart_work, K_MSEC(100));
+}
+
+void BleManager::advRestartHandler(struct k_work *work) {
+    // Stop any existing advertising first
+    int err = bt_le_adv_stop();
+    if (err && err != -EALREADY) {
+        LOG_WRN("Failed to stop advertising (err %d)", err);
+    }
+
+    // Small delay to ensure clean state
+    k_msleep(10);
+
+    // Restart advertising
     startAdvertising();
 }
 
