@@ -42,7 +42,12 @@ void BleManager::init() {
 
 void BleManager::startAdvertising() {
     // int err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-    int err = bt_le_adv_start(BT_LE_ADV_CONN, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+    int err = bt_le_adv_start(BT_LE_ADV_PARAM(
+            BT_LE_ADV_OPT_CONN,
+            BT_GAP_ADV_FAST_INT_MIN_2,
+            BT_GAP_ADV_FAST_INT_MAX_2,
+            NULL),
+        ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
     if (err >= 0 || err == -120) {
         LOG_INF("Advertising successfully started");
         return;
