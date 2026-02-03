@@ -40,6 +40,7 @@ docker run -it --rm \
     --privileged \
     -p 2223:22 \
     --device=/dev/ttyUSB0 \
+    --device=/dev/ttyACM0 \
     -v "$(pwd)/workspace:/workspace" \
     -v "$KEY_FILE.pub:/root/.ssh/authorized_keys" \
     -w /workspace \

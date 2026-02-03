@@ -1,22 +1,24 @@
 #include "BleManager.h"
 #include "FTMS.h" // To get UUID definitions
 
-struct bt_conn *BleManager::current_conns[CONFIG_BT_MAX_CONN] = {nullptr}; // Initialize array
+struct bt_conn *BleManager::current_conns[CONFIG_BT_MAX_CONN] = {nullptr};
 int BleManager::active_connections = 0;
 
 LOG_MODULE_REGISTER(BleManager, LOG_LEVEL_INF);
 K_MUTEX_DEFINE(BleManager::conn_mutex);
+
 // GAP Connection Callbacks
 BT_CONN_CB_DEFINE(conn_callbacks) = {
     .connected = BleManager::onConnected,
     .disconnected = BleManager::onDisconnected,
 };
 
+// Define the work item
+K_WORK_DELAYABLE_DEFINE(BleManager::adv_restart_work, BleManager::advRestartHandler);
+
 // -----------------------------------------------------------------------------
 // ADVERTISING DATA
 // -----------------------------------------------------------------------------
-// 1. Flags: General Discoverable
-// 2. UUIDs: We MUST advertise the FTMS Service UUID (0x1826)
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
     BT_DATA_BYTES(BT_DATA_UUID16_ALL,
@@ -32,51 +34,87 @@ static const struct bt_data sd[] = {
 void BleManager::init() {
     int err = bt_enable(NULL);
     if (err) {
-        LOG_ERR("Bluetooth init failed (err %d)\n", err);// change to LOG_ERR
+        LOG_ERR("Bluetooth init failed (err %d)", err);
         return;
     }
     LOG_INF("Bluetooth Initialized");
     active_connections = 0;
+
+    // Start advertising directly (no work queue needed here)
+    // The BT stack is ready after bt_enable() returns successfully
     startAdvertising();
 }
 
 void BleManager::startAdvertising() {
-    // int err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+    // Check if we're already at max connections
+    k_mutex_lock(&conn_mutex, K_FOREVER);
+    int conn_count = active_connections;
+    k_mutex_unlock(&conn_mutex);
+
+    if (conn_count >= CONFIG_BT_MAX_CONN) {
+        LOG_DBG("Max connections reached, not advertising");
+        return;
+    }
+
     int err = bt_le_adv_start(BT_LE_ADV_PARAM(
             BT_LE_ADV_OPT_CONN,
             BT_GAP_ADV_FAST_INT_MIN_2,
             BT_GAP_ADV_FAST_INT_MAX_2,
             NULL),
         ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-    if (err >= 0 || err == -120) {
+
+    if (err == 0) {
         LOG_INF("Advertising successfully started");
-        return;
+    } else if (err == -EALREADY) {
+        LOG_DBG("Advertising already active");
+    } else {
+        LOG_ERR("Advertising failed to start (err %d)", err);
     }
-    LOG_ERR("Advertising failed to start (err %d)\n", err);
 }
 
 bool BleManager::isConnected() {
-    return (active_connections > 0);
+    k_mutex_lock(&conn_mutex, K_FOREVER);
+    bool connected = (active_connections > 0);
+    k_mutex_unlock(&conn_mutex);
+    return connected;
 }
 
 void BleManager::onConnected(struct bt_conn *conn, uint8_t err) {
     if (err) {
         LOG_ERR("Connection failed (err 0x%02x)", err);
-    } else {
-        LOG_INF("Connected");
-        k_mutex_lock(&conn_mutex, K_FOREVER); // PROTECT THIS
-        for (int i = 0; i < CONFIG_BT_MAX_CONN; i++) {
-            if (current_conns[i] == nullptr) {
-                current_conns[i] = bt_conn_ref(conn);
-                active_connections++;
-                LOG_INF("Connected (Slot %d, Total %d)", i, active_connections);
-                break;
-            }
+        return;
+    }
+
+    LOG_INF("Connected");
+
+    k_mutex_lock(&conn_mutex, K_FOREVER);
+
+    bool slot_found = false;
+    for (int i = 0; i < CONFIG_BT_MAX_CONN; i++) {
+        if (current_conns[i] == nullptr) {
+            current_conns[i] = bt_conn_ref(conn);
+            active_connections++;
+            slot_found = true;
+            LOG_INF("Connected (Slot %d, Total %d)", i, active_connections);
+            break;
         }
-        k_mutex_unlock(&conn_mutex);
-        if (active_connections < CONFIG_BT_MAX_CONN) {
-            startAdvertising();
-        }
+    }
+
+    int current_conn_count = active_connections;
+    k_mutex_unlock(&conn_mutex);
+
+    if (!slot_found) {
+        LOG_WRN("No free connection slots!");
+        return;
+    }
+
+    // Use work queue ONLY for reconnecting after a connection
+    // This prevents race conditions with the BLE stack
+    if (current_conn_count < CONFIG_BT_MAX_CONN) {
+        // Cancel any pending restart work first
+        k_work_cancel_delayable(&adv_restart_work);
+        // Schedule restart after 200ms to let connection stabilize
+        k_work_schedule(&adv_restart_work, K_MSEC(200));
     }
 }
 
@@ -90,10 +128,32 @@ void BleManager::onDisconnected(struct bt_conn *conn, uint8_t reason) {
             current_conns[i] = nullptr;
             active_connections--;
             if (active_connections < 0) active_connections = 0;
+            LOG_INF("Slot %d freed, Total %d", i, active_connections);
             break;
         }
     }
     k_mutex_unlock(&conn_mutex);
+
+    // Cancel any pending restart work
+    k_work_cancel_delayable(&adv_restart_work);
+
+    // Restart advertising immediately on disconnect (safe to do directly)
+    startAdvertising();
+}
+
+void BleManager::advRestartHandler(struct k_work *work) {
+    LOG_DBG("Work handler: Restarting advertising");
+
+    // Stop any existing advertising first
+    int err = bt_le_adv_stop();
+    if (err && err != -EALREADY) {
+        LOG_WRN("Failed to stop advertising (err %d)", err);
+    }
+
+    // Small delay to ensure clean state
+    k_msleep(10);
+
+    // Restart advertising
     startAdvertising();
 }
 

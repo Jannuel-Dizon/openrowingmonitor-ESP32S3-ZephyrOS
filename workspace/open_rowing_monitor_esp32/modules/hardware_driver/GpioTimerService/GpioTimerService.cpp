@@ -64,18 +64,17 @@ void GpioTimerService::physicsLoop() {
     LOG_INF("Physics loop thread started");
 
     // Monitoring Variables
+    #ifdef CONFIG_GPIO_ENABLE_PHYSICS_PROFILING
     uint32_t impulseCount = 0;
     uint32_t lastMonitorTime = k_uptime_get_32();
     size_t minStackFree = SIZE_MAX;
 
-    #ifdef CONFIG_GPIO_ENABLE_PHYSICS_PROFILING
     uint32_t maxProcessingTime = 0;
     uint32_t totalProcessingTime = 0;
     #endif
 
     while (true) {
         if (k_msgq_get(&impulseQueue, &deltaCycles, K_FOREVER) == 0) {
-            impulseCount++;
 
             #ifdef CONFIG_GPIO_ENABLE_PHYSICS_PROFILING
             uint32_t startCycles = k_cycle_get_32();
@@ -86,6 +85,7 @@ void GpioTimerService::physicsLoop() {
             engine.handleRotationImpulse(dt);
 
             #ifdef CONFIG_GPIO_ENABLE_PHYSICS_PROFILING
+            impulseCount++;
             uint32_t elapsed = k_cycle_get_32() - startCycles;
             uint32_t elapsedUs = k_cyc_to_us_floor32(elapsed);
             totalProcessingTime += elapsedUs;
@@ -123,13 +123,11 @@ void GpioTimerService::physicsLoop() {
                 LOG_INF("  Total Impulses: %u", impulseCount);
                 LOG_INF("  Stack Low Water Mark: %u bytes", minStackFree);
 
-                #ifdef CONFIG_GPIO_ENABLE_PHYSICS_PROFILING
                 if (impulseCount > 0) {
                     uint32_t avgTime = totalProcessingTime / impulseCount;
                     LOG_INF("  Avg processing time: %u us", avgTime);
                     LOG_INF("  Max processing time: %u us", maxProcessingTime);
                 }
-                #endif
 
                 LOG_INF("=============================");
                 lastMonitorTime = now;
