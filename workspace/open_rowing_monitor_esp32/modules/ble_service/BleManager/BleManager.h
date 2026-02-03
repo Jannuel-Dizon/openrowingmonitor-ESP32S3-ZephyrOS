@@ -6,6 +6,7 @@
 #include <zephyr/bluetooth/conn.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/kernel.h>
 
 class BleManager {
 public:
@@ -23,6 +24,8 @@ private:
     static struct bt_conn *current_conns[CONFIG_BT_MAX_CONN];
     static struct k_mutex conn_mutex;
     static int active_connections;
+    static struct k_work_delayable adv_restart_work;
+    static void advRestartHandler(struct k_work *work);
 };
 
 #endif // BLE_MANAGER_H

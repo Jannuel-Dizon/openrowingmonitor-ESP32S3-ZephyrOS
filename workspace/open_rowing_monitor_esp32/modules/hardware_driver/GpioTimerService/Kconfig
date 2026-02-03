@@ -2,7 +2,7 @@ menu "GPIO Timer Service Configuration"
 
 config GPIO_IMPULSE_QUEUE_SIZE
     int "Size of Message Queue between ISR and Physics thread"
-    default 10
+    default 50
     help
         Size of the queue used by the ISR and the Physics thread.
         This queue will already be scaled in compile time depending on how many magnets are installed,

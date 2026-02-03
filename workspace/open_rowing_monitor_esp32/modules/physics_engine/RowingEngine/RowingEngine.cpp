@@ -232,11 +232,20 @@ double RowingEngine::calculateCyclePower(double driveAngle, double recoveryAngle
 }
 
 void RowingEngine::resetSessionInternal() {
-    // currentData.sessionActive = true;
     currentData = RowingData();
     currentData.dragFactor = settings.dragFactor;
     currentData.state = RowingState::RECOVERY;
     dragFactorAverager.reset(settings.dragFactor);
+
+    // Clear stale drag accumulation from previous session
+    recoveryDragAccumulator = 0.0;
+    recoveryDragSampleCount = 0;
+
+    // Pre-seed phase timing so first stroke produces valid cycleTime
+    double plausibleDisplacement = 8.0 / std::pow(settings.dragFactor / settings.magicConstant, 1.0/3.0);
+    recoveryPhaseStartTime = -2.0 * settings.minimumRecoveryTime;
+    recoveryPhaseStartAngularDisplacement = -1.0 * (2.0/3.0) * plausibleDisplacement / angularDisplacementPerImpulse;
+    previousAngularVelocity = 0;
 }
 
 void RowingEngine::startSession() {

@@ -82,52 +82,56 @@ void FTMS::notifyRowingData(struct bt_conn *conn, const RowingData& data) {
     uint8_t buffer[30];
     uint8_t cursor = 0;
 
+    auto clampU8  = [](double v) -> uint8_t  { return (v != v || v < 0) ? 0 : (v > 255 ? 255 : (uint8_t)v); };
+    auto clampU16 = [](double v) -> uint16_t { return (v != v || v < 0) ? 0 : (v > 65535 ? 65535 : (uint16_t)v); };
+    auto clampU24 = [](double v) -> uint32_t { return (v != v || v < 0) ? 0 : (v > 16777215 ? 16777215 : (uint32_t)v); };
+    auto clampS16 = [](double v) -> int16_t  { return (v != v) ? 0 : (v < -32768 ? -32768 : (v > 32767 ? 32767 : (int16_t)v)); };
+
     // [1] Flags (UINT16)
-    sys_put_le16(flags, &buffer[cursor]);
+    sys_put_le16(clampU16(flags), &buffer[cursor]);
     cursor += 2;
 
     // [2] Inst. Stroke Rate (UINT8 - 0.5 unit) & Stroke Count (UINT16)
     // Present because Bit 0 is 0
-    buffer[cursor++] = (uint8_t)(data.spm * 2.0);
-    sys_put_le16((uint16_t)data.strokeCount, &buffer[cursor]);
+    buffer[cursor++] = clampU8(data.spm * 2.0);
+    sys_put_le16(clampU16(data.strokeCount), &buffer[cursor]);
     cursor += 2;
 
     // [3] Average Stroke Rate (UINT8 - 0.5 unit)
     // Present because Bit 1 is 1
-    buffer[cursor++] = (uint8_t)(data.avgSpm * 2.0);
+    buffer[cursor++] = clampU8(data.avgSpm * 2.0);
 
     // [4] Total Distance (UINT24 - Meters)
     // Present because Bit 2 is 1
-    sys_put_le24((uint32_t)data.distance, &buffer[cursor]);
+    sys_put_le24(clampU24(data.distance), &buffer[cursor]);
     cursor += 3;
 
     // [5] Instantaneous Pace (UINT16 - Seconds per 500m)
     // Present because Bit 3 is 1
-    uint32_t rawPace = (uint32_t)(500.0 / data.instSpeed);
-    uint16_t instPace = (rawPace > 65535) ? 65535 : (uint16_t)rawPace;
-    sys_put_le16(instPace, &buffer[cursor]);
+    double rawPace = (data.instSpeed > 0.1) ? (500.0 / data.instSpeed) : 0;
+    sys_put_le16(clampU16(rawPace), &buffer[cursor]);
     cursor += 2;
 
     // [6] Average Pace (UINT16 - Seconds per 500m)
     // Present because Bit 4 is 1
-    uint16_t avgPace = (data.avgSpeed > 0.1) ? (uint16_t)(500.0 / data.avgSpeed) : 0;
-    sys_put_le16(avgPace, &buffer[cursor]);
+    double avgPace = (data.avgSpeed > 0.1) ? (500.0 / data.avgSpeed) : 0;
+    sys_put_le16(clampU16(avgPace), &buffer[cursor]);
     cursor += 2;
 
     // [7] Instantaneous Power (SINT16 - Watts)
     // Present because Bit 5 is 1
-    sys_put_le16((int16_t)data.instPower, &buffer[cursor]);
+    sys_put_le16(clampS16(data.instPower), &buffer[cursor]);
     cursor += 2;
 
     // [8] Average Power (SINT16 - Watts)
     // Present because Bit 6 is 1
-    sys_put_le16((int16_t)data.avgPower, &buffer[cursor]);
+    sys_put_le16(clampS16(data.avgPower), &buffer[cursor]);
     cursor += 2;
 
     // [9] Elapsed Time (UINT16 - Seconds)
     // Present because Bit 11 is 1
-    uint16_t elapsedTime =  !data.sessionActive ? 0 : (uint16_t)((double)(k_uptime_get_32() - data.sessionStartTime)/1000.00);
-    sys_put_le16(elapsedTime, &buffer[cursor]);
+    double elapsedTime =  !data.sessionActive ? 0 : ((double)(k_uptime_get_32() - data.sessionStartTime)/1000.00);
+    sys_put_le16(clampU16(elapsedTime), &buffer[cursor]);
     cursor += 2;
 
     // Total buffer size used will be 18 bytes
