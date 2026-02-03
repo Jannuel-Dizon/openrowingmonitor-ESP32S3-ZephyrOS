@@ -17,6 +17,10 @@
 
 LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
+K_EVENT_DEFINE(mainLoopEvent);
+#define BLE_CONNECTED_EVENT     BIT(0)
+#define BLE_DISCONNECTED_EVENT  BIT(1)
+
 void printStartupBanner() {
     LOG_INF("╔════════════════════════════════════════════╗");
     LOG_INF("║   Open Rowing Monitor - ESP32              ║");
@@ -53,6 +57,8 @@ int main(void)
     // Print banner
     printStartupBanner();
 
+    // k_event_init(&mainLoopEvent);
+
     LOG_INF("Initializing hardware...");
 
     // 1. Settings & Engine
@@ -71,7 +77,7 @@ int main(void)
     ftmsService.init();
 
     BleManager bleManager;
-    bleManager.init();
+    bleManager.init(&mainLoopEvent);
 
     // 4. The Bridge
     RowerBridge bridge(engine, ftmsService, bleManager);
@@ -96,37 +102,38 @@ int main(void)
     // ================================================================
     // Main Loop
     // ================================================================
-    bool wasConnected = false;
+    while(1) {
+        // Outer Loop
+        // Block this thread indefinitely until a connection happens
+        // This prevents the main thread from polling continously just to check if there is a connection
+        // Event group is handled by BLE Manager
 
-    while (1) {
-        bool isConnected = bleManager.isConnected();
-
-        // Handle BLE Connection State Changes
-        if (isConnected && !wasConnected) {
-            // Just connected
+        LOG_INF("Waiting for BLE connection.");
+        uint32_t connectedEvent = k_event_wait(&mainLoopEvent, BLE_CONNECTED_EVENT, true, K_FOREVER);
+        if(connectedEvent & BLE_CONNECTED_EVENT) {
+            LOG_INF("=== SESSION STARTED ===");
             gpioService.resume();
             engine.startSession();
-            wasConnected = true;
-            LOG_INF("=== SESSION STARTED ===");
-        } else if (!isConnected && wasConnected) {
-            // Just disconnected
-            gpioService.pause();
-            engine.endSession();
-            wasConnected = false;
-            LOG_INF("=== SESSION ENDED ===");
         }
+        while(1) {
+            // Inner Loop
+            // Active session, do all the work needed.
 
-        // Update BLE Data
-        if (isConnected) {
             bridge.update();
-        }
+            // k_msleep(250);
 
 #ifdef CONFIG_SYSM_ENABLE_MONITORING
-        // System Monitoring (every 30 seconds, debug builds only)
-        monitor.update(30000);
+            // System Monitoring (every 30 seconds, debug builds only)
+            monitor.update(30000);
 #endif
-
-        k_msleep(250);  // Main loop runs at 4Hz
+            uint32_t disconnectedEvent = k_event_wait(&mainLoopEvent, BLE_DISCONNECTED_EVENT, true, K_MSEC(250));
+            if(disconnectedEvent & BLE_DISCONNECTED_EVENT) {
+            LOG_INF("=== SESSION ENDED ===");
+            gpioService.pause();
+            engine.endSession();
+            break;
+            }
+        }
     }
 
     return 0;

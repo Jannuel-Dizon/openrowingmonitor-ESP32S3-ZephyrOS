@@ -3,6 +3,7 @@
 
 struct bt_conn *BleManager::current_conns[CONFIG_BT_MAX_CONN] = {nullptr};
 int BleManager::active_connections = 0;
+struct k_event *BleManager::state_change_event = nullptr;
 
 LOG_MODULE_REGISTER(BleManager, LOG_LEVEL_INF);
 K_MUTEX_DEFINE(BleManager::conn_mutex);
@@ -31,7 +32,7 @@ static const struct bt_data sd[] = {
     BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1),
 };
 
-void BleManager::init() {
+void BleManager::init(struct k_event* main_event_group) {
     int err = bt_enable(NULL);
     if (err) {
         LOG_ERR("Bluetooth init failed (err %d)", err);
@@ -39,6 +40,13 @@ void BleManager::init() {
     }
     LOG_INF("Bluetooth Initialized");
     active_connections = 0;
+
+    if (main_event_group == nullptr) {
+        LOG_ERR("Event was not registered");
+        return;
+    }
+
+    state_change_event = main_event_group;
 
     // Start advertising directly (no work queue needed here)
     // The BT stack is ready after bt_enable() returns successfully
@@ -85,14 +93,16 @@ void BleManager::onConnected(struct bt_conn *conn, uint8_t err) {
         return;
     }
 
-    LOG_INF("Connected");
-
     k_mutex_lock(&conn_mutex, K_FOREVER);
 
     bool slot_found = false;
     for (int i = 0; i < CONFIG_BT_MAX_CONN; i++) {
         if (current_conns[i] == nullptr) {
             current_conns[i] = bt_conn_ref(conn);
+            if(active_connections == 0 && state_change_event != nullptr) {
+                LOG_INF("First connection");
+                k_event_post(state_change_event, BIT(0));
+            }
             active_connections++;
             slot_found = true;
             LOG_INF("Connected (Slot %d, Total %d)", i, active_connections);
@@ -107,6 +117,8 @@ void BleManager::onConnected(struct bt_conn *conn, uint8_t err) {
         LOG_WRN("No free connection slots!");
         return;
     }
+
+    LOG_INF("Connected");
 
     // Use work queue ONLY for reconnecting after a connection
     // This prevents race conditions with the BLE stack
@@ -127,6 +139,10 @@ void BleManager::onDisconnected(struct bt_conn *conn, uint8_t reason) {
             bt_conn_unref(current_conns[i]);
             current_conns[i] = nullptr;
             active_connections--;
+            if(active_connections == 0 && state_change_event != nullptr) {
+                LOG_INF("Last connection lost");
+                k_event_post(state_change_event, BIT(1));
+            }
             if (active_connections < 0) active_connections = 0;
             LOG_INF("Slot %d freed, Total %d", i, active_connections);
             break;

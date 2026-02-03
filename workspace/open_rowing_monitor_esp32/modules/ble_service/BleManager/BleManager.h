@@ -10,7 +10,7 @@
 
 class BleManager {
 public:
-    void init();
+    void init(struct k_event* main_event_group);
     static void startAdvertising();
 
     // Check if a device is currently connected
@@ -24,6 +24,7 @@ private:
     static struct bt_conn *current_conns[CONFIG_BT_MAX_CONN];
     static struct k_mutex conn_mutex;
     static int active_connections;
+    static struct k_event *state_change_event;
     static struct k_work_delayable adv_restart_work;
     static void advRestartHandler(struct k_work *work);
 };
