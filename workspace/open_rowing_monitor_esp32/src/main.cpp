@@ -119,7 +119,7 @@ int main(void)
             // Inner Loop
             // Active session, do all the work needed.
 
-            bridge.update();
+            // bridge.update();
             // k_msleep(250);
 
 #ifdef CONFIG_SYSM_ENABLE_MONITORING

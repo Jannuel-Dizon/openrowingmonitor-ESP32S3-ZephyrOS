@@ -39,43 +39,56 @@ void RowingEngine::reset() {
 }
 
 void RowingEngine::handleRotationImpulse(double dt) {
-    if (dt < settings.minimumTimeBetweenImpulses) {
-        return;
-    }
-    if (dt > settings.maximumImpulseTimeBeforePause) {
-        return;
-    }
-
+    LOG_INF("Time between impulses %f", dt);
     k_mutex_lock(&dataLock, K_FOREVER);
-    currentData.totalTime += dt;
-    RowingState currentState = currentData.state;
+    currentData.spm = 25.1;
+    currentData.strokeCount = 300;
+    currentData.avgSpm = 25.0;
+    currentData.distance = 2000.2;
+    currentData.instSpeed = 4.2;
+    currentData.avgSpeed = 3.9;
+    currentData.instPower = 101.4;
+    currentData.avgPower = 100.1;
+    currentData.sessionActive = true;
+    currentData.sessionStartTime = 0;
     k_mutex_unlock(&dataLock);
+    // if (dt < settings.minimumTimeBetweenImpulses) {
+    //     return;
+    // }
+    // if (dt > settings.maximumImpulseTimeBeforePause) {
+    //     return;
+    // }
 
-    flankDetector.pushValue(dt);
+    // k_mutex_lock(&dataLock, K_FOREVER);
+    // currentData.totalTime += dt;
+    // RowingState currentState = currentData.state;
+    // k_mutex_unlock(&dataLock);
 
-    if (currentState == RowingState::DRIVE) {
-        if (flankDetector.isFlywheelUnpowered()) {
-            double driveLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - drivePhaseStartTime;
-            if (driveLen >= settings.minimumDriveTime) {
-                startRecoveryPhase(dt);
-            } else {
-                updateDrivePhase(dt);
-            }
-        } else {
-            updateDrivePhase(dt);
-        }
-    } else {
-        if (flankDetector.isFlywheelPowered()) {
-            double recLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - recoveryPhaseStartTime;
-            if (recLen >= settings.minimumRecoveryTime) {
-                startDrivePhase(dt);
-            } else {
-                updateRecoveryPhase(dt);
-            }
-        } else {
-            updateRecoveryPhase(dt);
-        }
-    }
+    // flankDetector.pushValue(dt);
+
+    // if (currentState == RowingState::DRIVE) {
+    //     if (flankDetector.isFlywheelUnpowered()) {
+    //         double driveLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - drivePhaseStartTime;
+    //         if (driveLen >= settings.minimumDriveTime) {
+    //             startRecoveryPhase(dt);
+    //         } else {
+    //             updateDrivePhase(dt);
+    //         }
+    //     } else {
+    //         updateDrivePhase(dt);
+    //     }
+    // } else {
+    //     if (flankDetector.isFlywheelPowered()) {
+    //         double recLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - recoveryPhaseStartTime;
+    //         if (recLen >= settings.minimumRecoveryTime) {
+    //             startDrivePhase(dt);
+    //         } else {
+    //             updateRecoveryPhase(dt);
+    //         }
+    //     } else {
+    //         updateRecoveryPhase(dt);
+    //     }
+    // }
 }
 
 void RowingEngine::startDrivePhase(double dt) {
