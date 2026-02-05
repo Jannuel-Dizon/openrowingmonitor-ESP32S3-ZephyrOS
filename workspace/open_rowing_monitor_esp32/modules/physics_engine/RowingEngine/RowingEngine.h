@@ -24,6 +24,8 @@ private:
     double recoveryPhaseStartAngularDisplacement = 0;
     double previousAngularVelocity = 0;
 
+    uint32_t impulseCount = 0;
+
     // Automatic dragfactor
     double recoveryDragAccumulator = 0.0;
     int recoveryDragSampleCount = 0;

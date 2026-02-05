@@ -1,0 +1,44 @@
+menu "FAKEISR Timer Service Configuration"
+
+config FAKEISR_IMPULSE_QUEUE_SIZE
+    int "Size of Message Queue between ISR and Physics thread"
+    default 50
+    help
+        Size of the queue used by the ISR and the Physics thread.
+        This queue will already be scaled in compile time depending on how many magnets are installed,
+        as long as you updated CONFIG_ORM_IMPULSE_PER_REV.
+
+        Only increase if you run into issues where the queue size isnt enough.
+
+config FAKEISR_PHYSICS_THREAD_STACK_SIZE
+    int "Physics Thread Stack Size (bytes)"
+    default 4096
+    range 2048 16384
+    help
+        Stack size for the physics processing thread.
+        This thread handles all rowing calculations triggered by magnet pulses.
+
+        Increase this if you see stack overflow errors during long sessions.
+        Monitor actual usage with CONFIG_THREAD_ANALYZER=y.
+
+        Recommended values:
+        - 2048: Minimal (may overflow during complex sessions)
+        - 4096: Safe for typical usage
+        - 6144: Extra headroom for debugging/profiling
+        - 8192: Maximum safety margin
+
+config FAKEISR_ENABLE_PHYSICS_PROFILING
+    bool "Enable Physics Thread Performance Profiling"
+    default n
+    help
+        When enabled, the physics thread measures and logs:
+        - Processing time per impulse
+        - Maximum processing time
+        - Average processing time
+
+        This adds minimal overhead (~5 microseconds per impulse) but provides
+        valuable debugging information.
+
+        Disable for production to save CPU cycles.
+
+endmenu

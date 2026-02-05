@@ -6,7 +6,8 @@ set(ZEPHYR_EXTRA_MODULES
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/physics_engine/RowingEngine
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/physics_engine/MovingFlankDetector
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/physics_engine/MovingAverager
-    ${CMAKE_CURRENT_SOURCE_DIR}/modules/hardware_driver/GpioTimerService
+    # ${CMAKE_CURRENT_SOURCE_DIR}/modules/hardware_driver/GpioTimerService
+    ${CMAKE_CURRENT_SOURCE_DIR}/modules/hardware_driver/FakeISR
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/BleManager
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/FTMS
     ${CMAKE_CURRENT_SOURCE_DIR}/modules/ble_service/RowerBridge
@@ -26,7 +27,8 @@ zephyr_include_directories(
     modules/physics_engine/RowingEngine
     modules/physics_engine/MovingFlankDetector
     modules/physics_engine/MovingAverager
-    modules/hardware_driver/GpioTimerService
+    # modules/hardware_driver/GpioTimerService
+    modules/hardware_driver/FakeISR
     modules/ble_service/BleManager
     modules/ble_service/FTMS
     modules/ble_service/RowerBridge

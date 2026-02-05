@@ -1,0 +1,4 @@
+name: FakeISR
+build:
+    cmake: .
+    kconfig: Kconfig

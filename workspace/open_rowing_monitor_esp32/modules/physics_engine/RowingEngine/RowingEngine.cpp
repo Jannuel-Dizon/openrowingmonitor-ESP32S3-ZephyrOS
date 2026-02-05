@@ -3,6 +3,7 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(RowingEngine, LOG_LEVEL_INF);
+static RowingState lastLoggedState = RowingState::RECOVERY;
 
 RowingEngine::RowingEngine(RowingSettings rs)
     : settings(rs),
@@ -39,56 +40,60 @@ void RowingEngine::reset() {
 }
 
 void RowingEngine::handleRotationImpulse(double dt) {
-    LOG_INF("Time between impulses %f", dt);
-    k_mutex_lock(&dataLock, K_FOREVER);
-    currentData.spm = 25.1;
-    currentData.strokeCount = 300;
-    currentData.avgSpm = 25.0;
-    currentData.distance = 2000.2;
-    currentData.instSpeed = 4.2;
-    currentData.avgSpeed = 3.9;
-    currentData.instPower = 101.4;
-    currentData.avgPower = 100.1;
-    currentData.sessionActive = true;
-    currentData.sessionStartTime = 0;
-    k_mutex_unlock(&dataLock);
-    // if (dt < settings.minimumTimeBetweenImpulses) {
-    //     return;
-    // }
-    // if (dt > settings.maximumImpulseTimeBeforePause) {
-    //     return;
-    // }
-
+    /* Hmm */
+    // LOG_INF("Time between impulses %f", dt);
     // k_mutex_lock(&dataLock, K_FOREVER);
-    // currentData.totalTime += dt;
-    // RowingState currentState = currentData.state;
+    // currentData.spm = 25.1;
+    // currentData.strokeCount = 300;
+    // currentData.avgSpm = 25.0;
+    // currentData.distance = 2000.2;
+    // currentData.instSpeed = 4.2;
+    // currentData.avgSpeed = 3.9;
+    // currentData.instPower = 101.4;
+    // currentData.avgPower = 100.1;
+    // currentData.sessionActive = true;
+    // currentData.sessionStartTime = 0;
     // k_mutex_unlock(&dataLock);
+    /* Hmm */
+    /* Main code */
+    if (dt < settings.minimumTimeBetweenImpulses) {
+        return;
+    }
+    if (dt > settings.maximumImpulseTimeBeforePause) {
+        return;
+    }
 
-    // flankDetector.pushValue(dt);
+    k_mutex_lock(&dataLock, K_FOREVER);
+    currentData.totalTime += dt;
+    RowingState currentState = currentData.state;
+    k_mutex_unlock(&dataLock);
 
-    // if (currentState == RowingState::DRIVE) {
-    //     if (flankDetector.isFlywheelUnpowered()) {
-    //         double driveLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - drivePhaseStartTime;
-    //         if (driveLen >= settings.minimumDriveTime) {
-    //             startRecoveryPhase(dt);
-    //         } else {
-    //             updateDrivePhase(dt);
-    //         }
-    //     } else {
-    //         updateDrivePhase(dt);
-    //     }
-    // } else {
-    //     if (flankDetector.isFlywheelPowered()) {
-    //         double recLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - recoveryPhaseStartTime;
-    //         if (recLen >= settings.minimumRecoveryTime) {
-    //             startDrivePhase(dt);
-    //         } else {
-    //             updateRecoveryPhase(dt);
-    //         }
-    //     } else {
-    //         updateRecoveryPhase(dt);
-    //     }
-    // }
+    flankDetector.pushValue(dt);
+
+    if (currentState == RowingState::DRIVE) {
+        if (flankDetector.isFlywheelUnpowered()) {
+            double driveLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - drivePhaseStartTime;
+            if (driveLen >= settings.minimumDriveTime) {
+                startRecoveryPhase(dt);
+            } else {
+                updateDrivePhase(dt);
+            }
+        } else {
+            updateDrivePhase(dt);
+        }
+    } else {
+        if (flankDetector.isFlywheelPowered()) {
+            double recLen = (currentData.totalTime - flankDetector.timeToBeginOfFlank()) - recoveryPhaseStartTime;
+            if (recLen >= settings.minimumRecoveryTime) {
+                startDrivePhase(dt);
+            } else {
+                updateRecoveryPhase(dt);
+            }
+        } else {
+            updateRecoveryPhase(dt);
+        }
+    }
+    /* Main code */
 }
 
 void RowingEngine::startDrivePhase(double dt) {
@@ -279,12 +284,25 @@ void RowingEngine::endSession() {
 
 void RowingEngine::printData() {
     k_mutex_lock(&dataLock, K_FOREVER);
-    printk("Power: %f\n", currentData.instPower);
-    printk("Torque: %f\n", currentData.instTorque);
-    printk("Stroke Rate: %f\n", currentData.spm);
-    printk("Pace: %f\n", currentData.instSpeed);
+    // currentData.spm = 25.1;
+    // currentData.strokeCount = 300;
+    // currentData.avgSpm = 25.0;
+    // currentData.distance = 2000.2;
+    // currentData.instSpeed = 4.2;
+    // currentData.avgSpeed = 3.9;
+    // currentData.instPower = 101.4;
+    // currentData.avgPower = 100.1;
+    // currentData.sessionActive = true;
+    // currentData.sessionStartTime = 0
+    printk("\nStroke Rate: %f\n", currentData.spm);
+    printk("Stroke Count: %f\n", currentData.strokeCount);
+    printk("Average Stroke Rate: %f\n", currentData.avgSpm);
     printk("Distance: %f\n", currentData.distance);
-    printk("Total Strokes: %d\n", currentData.strokeSampleCount);
+    printk("Pace: %f\n", currentData.instSpeed);
+    printk("Average Pace: %f\n", currentData.avgSpeed);
+    printk("Power: %f\n", currentData.instPower);
+    printk("Average Power: %f\n", currentData.avgPower);
+    printk("Drag factor: %f\n", currentData.dragFactor);
     k_mutex_unlock(&dataLock);
 }
 
