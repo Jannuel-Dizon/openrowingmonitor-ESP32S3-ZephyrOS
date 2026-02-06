@@ -8,6 +8,7 @@
 #include "FTMS.h"
 #include "RowerBridge.h"
 #include "FakeISR.h"
+// #include "GpioTimerService.h"
 
 
 LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
@@ -26,13 +27,18 @@ K_EVENT_DEFINE(mainLoopEvent);
 
 int main(void)
 {
-    // LOG_INF("=== FULL SYSTEM WITH REPLAY ===");
-    // LOG_INF("Goal: Find interaction bugs");
+    LOG_INF("=== FULL SYSTEM WITH REPLAY ===");
+    LOG_INF("Goal: Find interaction bugs");
 
     // 1. Settings & Engine
     RowingSettings settings;
     RowingEngine engine(settings);
 
+    // GpioTimerService gpioService(engine);
+    // if (gpioService.init() != 0) {
+    //     LOG_ERR("Failed to initialize GPIO. Check Devicetree alias 'impulse-sensor'");
+    //     return -1;
+    // }
     FakeISR fakeisr(engine);
 
     // 2. BLE Services & Manager
@@ -59,8 +65,6 @@ int main(void)
             engine.startSession();
             fakeisr.start();
 
-            uint32_t impulse_count = 0;
-
             while(1) {
                 // Update BLE at 4Hz
                 bridge.update();
@@ -68,7 +72,6 @@ int main(void)
                 // Check for disconnect
                 uint32_t disconnectedEvent = k_event_wait(&mainLoopEvent, BLE_DISCONNECTED_EVENT, true, K_MSEC(250));
                 if(disconnectedEvent & BLE_DISCONNECTED_EVENT) {
-                    LOG_INF("=== DISCONNECTED after %u impulses ===", impulse_count);
                     engine.endSession();
                     fakeisr.stop();
                     break;
@@ -77,8 +80,9 @@ int main(void)
         }
     }
 
-    // Test for Physics engine without Bluetooth
+    // // Test for Physics engine without Bluetooth
     // engine.startSession();
+    // // gpioService.resume();
     // fakeisr.start();
 
     // while(1) {

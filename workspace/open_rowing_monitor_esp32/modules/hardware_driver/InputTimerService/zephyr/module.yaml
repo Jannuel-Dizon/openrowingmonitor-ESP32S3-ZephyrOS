@@ -1,0 +1,4 @@
+name: InputTimerService
+build:
+    cmake: .
+    kconfig: Kconfig

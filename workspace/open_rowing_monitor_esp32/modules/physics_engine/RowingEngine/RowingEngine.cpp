@@ -55,6 +55,18 @@ void RowingEngine::handleRotationImpulse(double dt) {
     // currentData.sessionStartTime = 0;
     // k_mutex_unlock(&dataLock);
     /* Hmm */
+
+    /* Get dt */
+    // impulseCount++;
+
+    // // Stop after 500 impulses (about 10 strokes worth)
+    // if (impulseCount >= 2001) {
+    //     LOG_INF("CAPTURE_COMPLETE");
+    //     return;
+    // }
+    // printk("DT,%.6f\n", dt);
+    /* Get dt */
+
     /* Main code */
     if (dt < settings.minimumTimeBetweenImpulses) {
         return;
@@ -295,7 +307,7 @@ void RowingEngine::printData() {
     // currentData.sessionActive = true;
     // currentData.sessionStartTime = 0
     printk("\nStroke Rate: %f\n", currentData.spm);
-    printk("Stroke Count: %f\n", currentData.strokeCount);
+    printk("Stroke Count: %d\n", currentData.strokeCount);
     printk("Average Stroke Rate: %f\n", currentData.avgSpm);
     printk("Distance: %f\n", currentData.distance);
     printk("Pace: %f\n", currentData.instSpeed);
