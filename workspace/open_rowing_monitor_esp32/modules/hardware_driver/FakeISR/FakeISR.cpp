@@ -5,7 +5,7 @@
 #define CONFIG_FAKEISR_PHYSICS_THREAD_STACK_SIZE 4096  // Safe default
 #endif
 
-K_THREAD_STACK_DEFINE(physicsThreadStack, CONFIG_FAKEISR_PHYSICS_THREAD_STACK_SIZE);
+static K_THREAD_STACK_DEFINE(physicsThreadStack, CONFIG_FAKEISR_PHYSICS_THREAD_STACK_SIZE);
 
 #define PHYSICS_PRIORITY 5
 
@@ -109,9 +109,9 @@ void FakeISR::replayLoop() {
         }
 
         // Wait the actual dt time to simulate real timing
-        uint32_t sleep_ms = (uint32_t)(dt * 1000.0);
-        if (sleep_ms > 0) {
-            k_msleep(sleep_ms);
+        uint32_t sleep_us = (uint32_t)(dt * 1000000.0);
+        if (sleep_us > 0) {
+            k_usleep(sleep_us);
         }
 
         // Move to next impulse

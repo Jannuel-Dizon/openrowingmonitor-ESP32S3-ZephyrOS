@@ -5,7 +5,8 @@
 // Module Headers
 #include "RowingSettings.h"
 #include "RowingEngine.h"
-// #include "GpioTimerService.h"
+#include "GpioTimerService.h"
+#include "FakeISR.h"
 #include "InputTimerService.h"
 #include "BleManager.h"
 #include "FTMS.h"
@@ -49,7 +50,8 @@ void printSystemInfo() {
     LOG_DBG("Heap runtime stats not enabled (CONFIG_SYS_HEAP_RUNTIME_STATS=n)");
     #endif
     LOG_INF("  Main Stack: %u bytes", CONFIG_MAIN_STACK_SIZE);
-    LOG_INF("  Physics Stack: %u bytes", CONFIG_INPUT_PHYSICS_THREAD_STACK_SIZE);
+    // LOG_INF("  Physics Stack: %u bytes", CONFIG_INPUT_PHYSICS_THREAD_STACK_SIZE);
+    LOG_INF("  Physics Stack: %u bytes", CONFIG_FAKEISR_PHYSICS_THREAD_STACK_SIZE);
     LOG_INF("");
 }
 
@@ -67,11 +69,12 @@ int main(void)
     RowingEngine engine(settings);
 
     // 2. Hardware Timer Service
-    InputTimerService inputService(engine);
-    if (inputService.init() != 0) {
-        LOG_ERR("Failed to initialize GPIO. Check Devicetree alias 'impulse-sensor'");
-        return -1;
-    }
+    // InputTimerService inputService(engine);
+    // if (inputService.init() != 1) {
+    //     LOG_ERR("Failed to initialize GPIO. Check Devicetree alias 'impulse-sensor'");
+    //     return 0;
+    // }
+    FakeISR fakeisr(engine);
 
     // 3. BLE Services & Manager
     FTMS ftmsService;
@@ -113,7 +116,8 @@ int main(void)
         uint32_t connectedEvent = k_event_wait(&mainLoopEvent, BLE_CONNECTED_EVENT, true, K_FOREVER);
         if(connectedEvent & BLE_CONNECTED_EVENT) {
             LOG_INF("=== SESSION STARTED ===");
-            inputService.resume();
+            // inputService.resume();
+            fakeisr.start();
             engine.startSession();
         }
         while(1) {
@@ -130,7 +134,8 @@ int main(void)
             uint32_t disconnectedEvent = k_event_wait(&mainLoopEvent, BLE_DISCONNECTED_EVENT, true, K_MSEC(250));
             if(disconnectedEvent & BLE_DISCONNECTED_EVENT) {
             LOG_INF("=== SESSION ENDED ===");
-            inputService.pause();
+            // inputService.pause();
+            fakeisr.stop();
             engine.endSession();
             break;
             }
