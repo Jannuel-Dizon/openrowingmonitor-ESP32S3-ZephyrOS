@@ -154,7 +154,7 @@ void GpioTimerService::handleInterrupt() {
     }
 
     uint32_t deltaCycles = currentCycles - lastCycleTime;
-    if(deltaCycles < minCycles) return;
+    // if(deltaCycles < minCycles) return;
     lastCycleTime = currentCycles;
 
 
