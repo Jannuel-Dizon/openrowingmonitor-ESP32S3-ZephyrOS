@@ -112,6 +112,8 @@ int main(void)
     LOG_INF("Advertising as: %s", CONFIG_BT_DEVICE_NAME);
     LOG_INF("");
 
+    engine.startSession();
+    k_sleep(K_FOREVER);
     // ================================================================
     // Main Loop
     // ================================================================
